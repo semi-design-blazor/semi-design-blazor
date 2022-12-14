@@ -22,8 +22,4 @@
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Components\Divider" />
-    </ItemGroup>
 </Project>

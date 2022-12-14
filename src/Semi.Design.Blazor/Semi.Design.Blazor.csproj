@@ -13,4 +13,18 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Component\BlazorComponent\BlazorComponent.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot" />
+    </ItemGroup>
+
 </Project>

@@ -1,0 +1,8 @@
+﻿@namespace BlazorComponent
+@inherits BDomComponentBase
+
+<button class="@CssProvider.GetClass()" onclick="@OnClick" onmousedown="@OnMouseDown" style="@CssProvider.GetStyle()">
+    <span class='semi-content'>
+        @ChildContent
+    </span>
+</button>
