@@ -1,0 +1,9 @@
+@namespace BlazorComponent
+
+@inherits SDomComponentBase
+
+<button class="@CssProvider?.GetClass()" style="@CssProvider.GetStyle()">
+    <span class="semi-content">
+        @ChildContent
+    </span>
+</button>    

@@ -1,25 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <Version>0.1.0</Version>
-        <PackageProjectUrl></PackageProjectUrl>
-        <PackageIcon>logo.png</PackageIcon>
-        <PackageIconUrl />
-        <RepositoryUrl>https://github.com/semi-design-blazor/BlazorComponent</RepositoryUrl>
-        <RepositoryType>github</RepositoryType>
-        <Description>BlazorComponent</Description>
-        <PackageReleaseNotes />
-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.4.0" />
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Divider\" />
+  </ItemGroup>
+
 </Project>
