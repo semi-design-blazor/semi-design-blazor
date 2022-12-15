@@ -53,11 +53,23 @@ public partial class SButton
             CssProvider?.CssApply("semi-disabled");
         }
 
-        CssProvider?.CssApply(Class)
-            .CssApply("semi-" + Size)
-            .CssApply("semi-" + Theme)
-            .CssApply("semi-" + Block)
-            .CssApply("semi-button semi-button-light");
+        CssProvider.CssApply("semi-button");
+
+        if (!string.IsNullOrEmpty(Class))
+        {
+            CssProvider?.CssApply(Class);
+        }
+
+        if (!string.IsNullOrEmpty(Size))
+        {
+            CssProvider?.CssApply("semi-" + Size.ToLower());
+        }
+
+        if (!string.IsNullOrEmpty(Theme))
+        {
+            CssProvider?.CssApply("semi-button-"+Theme.ToLower());
+        }
+
         if (Secondary)
         {
             CssProvider?.CssApply("semi-button-secondary");

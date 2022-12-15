@@ -2,7 +2,7 @@
 
 @inherits SDomComponentBase
 
-<button class="@CssProvider?.GetClass()" style="@CssProvider.GetStyle()">
+<button class="@CssProvider?.GetClass()" style="@CssProvider?.GetStyle()" onclick="@OnClick" onmousedown="@OnMouseDown">
     <span class="semi-content">
         @ChildContent
     </span>
