@@ -31,18 +31,6 @@ public partial class SButtonGroup
 
     protected override async Task OnInitializedAsync()
     {
-        var builder = new RenderTreeBuilder();
-        builder.AddContent(0, this.ChildContent);
-        var frame = builder.GetFrames().Array.Where(x => new[] { RenderTreeFrameType.Component }.Any(t => x.FrameType == t));
-
-        foreach (var f in frame)
-        {
-            if (f.Component != null)
-            {
-                await f.Component?.SetParametersAsync(_parameters);
-            }
-        }
-
         if (!string.IsNullOrEmpty(Style))
         {
             CssProvider.StyleApply(Style!);
