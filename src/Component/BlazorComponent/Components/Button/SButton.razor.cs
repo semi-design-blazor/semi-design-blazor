@@ -4,31 +4,44 @@ namespace BlazorComponent;
 
 public partial class SButton
 {
-    [Parameter] public bool Secondary { get; set; }
+    [Parameter]
+    public bool Secondary { get; set; }
 
-    [Parameter] public bool Tertiary { get; set; }
+    [Parameter]
+    public bool Tertiary { get; set; }
 
-    [Parameter] public bool Warning { get; set; }
+    [Parameter]
+    public bool Warning { get; set; }
 
-    [Parameter] public bool Danger { get; set; }
+    [Parameter]
+    public bool Danger { get; set; }
 
-    [Parameter] public bool Block { get; set; }
+    [Parameter]
+    public bool Block { get; set; }
 
-    [Parameter] public string? Circle { get; set; }
+    [Parameter]
+    public string? Circle { get; set; }
 
-    [Parameter] public string? Height { get; set; }
+    [Parameter]
+    public string? Height { get; set; }
 
-    [Parameter] public bool Link { get; set; }
+    [Parameter]
+    public bool Link { get; set; }
 
-    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
 
-    [Parameter] public EventCallback<MouseEventArgs> OnMouseDown { get; set; }
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseDown { get; set; }
 
-    [Parameter] public bool Light { get; set; }
+    [Parameter]
+    public bool Light { get; set; }
 
-    [Parameter] public string? Key { get; set; }
+    [Parameter]
+    public string? Key { get; set; }
 
-    [Parameter] public bool Disabled { get; set; }
+    [Parameter]
+    public bool Disabled { get; set; }
 
     [Parameter]
     public string? Theme { get; set; }
@@ -37,15 +50,12 @@ public partial class SButton
     public string? Size { get; set; }
 
     [Parameter]
-    public ComponentCssProvider? CssProvider { get; set; }
-
-    [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    private const string PrefixCls = "semi-button";
 
     protected override void OnInitialized()
     {
-        CssProvider = new ComponentCssProvider();
-
         CssProvider?.StyleApply(Style);
 
         if (Disabled)
@@ -53,7 +63,7 @@ public partial class SButton
             CssProvider?.CssApply("semi-disabled");
         }
 
-        CssProvider.CssApply("semi-button");
+        CssProvider.CssApply(PrefixCls);
 
         if (!string.IsNullOrEmpty(Class))
         {
@@ -62,35 +72,43 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Size))
         {
-            CssProvider?.CssApply("semi-" + Size.ToLower());
+            CssProvider?.CssApply(PrefixCls + Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
         {
-            CssProvider?.CssApply("semi-button-"+Theme.ToLower());
+            CssProvider?.CssApply(PrefixCls + Theme.ToLower());
+        }
+        else
+        {
+            CssProvider?.CssApply(PrefixCls + "-light");
         }
 
         if (Secondary)
         {
-            CssProvider?.CssApply("semi-button-secondary");
+            CssProvider?.CssApply(PrefixCls + "-secondary");
         }
         else if (Tertiary)
         {
-            CssProvider?.CssApply("semi-button-tertiary");
+            CssProvider?.CssApply(PrefixCls + "-tertiary");
         }
         else if (Warning)
         {
-            CssProvider?.CssApply("semi-button-warning");
+            CssProvider?.CssApply(PrefixCls + "-warning");
         }
         else if (Danger)
         {
-            CssProvider?.CssApply("semi-button-danger");
+            CssProvider?.CssApply(PrefixCls + "-danger");
         }
         else
         {
-            CssProvider?.CssApply("semi-button-primary");
+            CssProvider?.CssApply(PrefixCls + "-primary");
         }
         base.OnInitialized();
     }
-    
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+    }
 }

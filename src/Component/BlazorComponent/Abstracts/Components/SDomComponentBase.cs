@@ -1,4 +1,6 @@
-﻿namespace BlazorComponent;
+﻿using Microsoft.AspNetCore.Components.Rendering;
+
+namespace BlazorComponent;
 
 public abstract class SDomComponentBase : SComponentBase
 {
@@ -23,7 +25,13 @@ public abstract class SDomComponentBase : SComponentBase
     [Parameter(CaptureUnmatchedValues = true)]
     public virtual IDictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();
 
+    
     public ComponentCssProvider CssProvider { get; } = new();
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        base.BuildRenderTree(builder);
+    }
 
     protected override Task OnInitializedAsync()
     {

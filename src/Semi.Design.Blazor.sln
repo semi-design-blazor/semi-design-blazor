@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1F4C2D3E-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponent.Test", "Test\BlazorComponent.Test\BlazorComponent.Test.csproj", "{ABC4BC5B-373E-4C30-91C9-172BFA091392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorComponent", "Component\BlazorComponent\BlazorComponent.csproj", "{F8439B78-4FA7-41C4-83A0-4E49302856B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponent", "Component\BlazorComponent\BlazorComponent.csproj", "{F8439B78-4FA7-41C4-83A0-4E49302856B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
