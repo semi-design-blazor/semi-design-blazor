@@ -11,7 +11,7 @@
         {
           "key": "1-1",
           "title": "Introduction 介绍",
-          "component": "Divider"
+          "component": "Divider-Index"
         }
       ]
     },
@@ -21,7 +21,8 @@
       "children": [
         {
           "key": "2-1",
-          "title": "Divider 分割线"
+          "title": "Divider 分割线",
+          "component": "Divider-Index"
         },
         {
           "key": "2-2",

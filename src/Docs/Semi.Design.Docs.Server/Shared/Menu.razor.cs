@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Semi.Design.Docs.Server.Options;
+using Token.Events;
 
 namespace Semi.Design.Docs.Server.Shared;
 
@@ -9,6 +10,9 @@ public partial class Menu
 
     [Inject]
     public required NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    public required IKeyLoadEventBus KeyLoadEventBus { get; set; }
 
     #endregion
 
@@ -22,8 +26,9 @@ public partial class Menu
         StateHasChanged();
     }
 
-    public void GoTo(string path)
+    public async void GoTo(string path)
     {
+        await KeyLoadEventBus.PushAsync("Component", path);
         NavigationManager.NavigateTo("?path=" + path);
     }
 }
