@@ -1,0 +1,71 @@
+﻿<div id="side-nav" class="side-nav">
+    <div style="width:100%;height:calc(100% - 60px);min-width:240px;max-width:280px">
+        @foreach (var i in MenuTree)
+        {
+
+            <div class="menu semi-navigation-sub-title semi-navigation-item-inner" @onclick="()=>Show(i)">
+                <span>@i.Title</span>
+                <i style="margin-left:80%;">
+                    @if (i.Show)
+                    {
+                        <i class="semi-navigation-item-icon semi-navigation-item-icon-toggle-right"><span role="img" aria-label="chevron_down" class="semi-icon semi-icon-default semi-icon-chevron_down semi-navigation-icon-rotate-180" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.08045 7.59809C4.66624 7.01231 5.61599 7.01231 6.20177 7.59809L11.8586 13.2549L17.5155 7.59809C18.1013 7.01231 19.051 7.01231 19.6368 7.59809C20.2226 8.18388 20.2226 9.13363 19.6368 9.71941L12.9193 16.4369C12.3335 17.0227 11.3838 17.0227 10.798 16.4369L4.08045 9.71941C3.49467 9.13363 3.49467 8.18388 4.08045 7.59809Z" fill="currentColor"></path></svg></span></i>
+                    }
+                    else
+                    {
+                        <i class="semi-navigation-item-icon semi-navigation-item-icon-toggle-right"><span role="img" aria-label="chevron_down" class="semi-icon semi-icon-default semi-icon-chevron_down semi-navigation-icon-rotate-0" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.08045 7.59809C4.66624 7.01231 5.61599 7.01231 6.20177 7.59809L11.8586 13.2549L17.5155 7.59809C18.1013 7.01231 19.051 7.01231 19.6368 7.59809C20.2226 8.18388 20.2226 9.13363 19.6368 9.71941L12.9193 16.4369C12.3335 17.0227 11.3838 17.0227 10.798 16.4369L4.08045 9.71941C3.49467 9.13363 3.49467 8.18388 4.08045 7.59809Z" fill="currentColor"></path></svg></span></i>
+                    }
+                </i>
+            </div>
+            <div class="semi-collapsible-wrapper @(i.Show?"list-show":"list-display")" style="overflow: hidden; height: auto; opacity: 1; transition-duration: 0ms;">
+                <div x-semi-prop="children" style="overflow: hidden;">
+                    <ul class="semi-navigation-sub semi-navigation-sub-open">
+                        @if (i.Children != null)
+                        {
+                            @foreach (var a in i.Children)
+                            {
+                                <a @onclick="()=>GoTo(a.Component!)">
+                                <li role="menuitem" tabindex="-1" aria-disabled="false" class="semi-navigation-item-normal semi-navigation-item">
+                                    <i class="semi-navigation-item-icon semi-navigation-item-icon-info">
+                                        <span role="img" class="semi-icon semi-icon-extra-large" aria-hidden="true">
+                                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.848 19.129c.773 0 1.203-.398 1.504-1.407l.816-2.493h5.145l.828 2.493c.29.999.74 1.407 1.525 1.407.827 0 1.375-.494 1.375-1.268 0-.3-.075-.655-.226-1.117L10.12 6.152C9.658 4.777 9.014 4.22 7.8 4.22c-1.225 0-1.88.57-2.342 1.933L1.763 16.744c-.183.548-.258.881-.258 1.171 0 .73.548 1.214 1.343 1.214zm2.965-6.059l1.869-5.93h.14l1.858 5.93H5.813z" fill="#6A6F7F"></path><path d="M16.93 15.985c0-.807.594-1.29 1.596-1.29h1.893v1.02c0 .929-.826 1.652-1.883 1.652-.956 0-1.605-.566-1.605-1.382zm3.591 2.042v-.28.344c.074.64.501 1.002 1.15 1.002.761 0 1.188-.473 1.188-1.308v-5.381c0-2.18-1.447-3.405-4.027-3.405-1.076 0-1.901.186-2.523.51-.863.436-1.262 1.02-1.262 1.596 0 .501.334.863.872.863.4 0 .66-.102.937-.325.548-.492 1.077-.77 1.819-.77 1.122 0 1.744.52 1.744 1.512v.807H18.08c-2.236 0-3.581 1.123-3.581 2.941 0 1.79 1.299 2.997 3.22 2.997 1.205 0 2.3-.221 2.801-1.103z" fill="#AAB2BF"></path></svg>
+                                        </span>
+                                    </i>
+                                    <span class="semi-navigation-item-text">@a.Title</span>
+                                    <i class="semi-navigation-item-icon semi-navigation-item-icon-toggle-right">
+                                    </i>
+                                </li>
+                                </a>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<style>
+    .menu {
+        transition: .5s;
+        height: 50px;
+        padding: 5px;
+    }
+
+        .menu:hover {
+            transition: .5s;
+        }
+
+    .list-display {
+        animation: fadenum 2s 1;
+        display: none;
+    }
+
+    .list-show {
+        animation: fadenum 2s 1;
+    }
+@@keyframes fadenum{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+</style>
