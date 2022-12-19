@@ -7,6 +7,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSemiDesignDocs();
 builder.Services.AddEventBus();
+builder.Services.AddSemiDesignBlazor();
 
 var app = builder.Build();
 

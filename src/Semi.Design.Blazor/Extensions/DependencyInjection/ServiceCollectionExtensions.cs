@@ -1,4 +1,5 @@
-﻿using Semi.Design.Blazor.Options;
+﻿using Semi.Design.Blazor;
+using Semi.Design.Blazor.Options;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,7 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddSemiDesignBlazorInternal(this IServiceCollection services)
     {
+        services.AddScoped<HelperJsInterop>();
 
         return services;
     }

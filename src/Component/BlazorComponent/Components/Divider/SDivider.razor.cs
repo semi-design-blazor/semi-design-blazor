@@ -4,13 +4,14 @@ public partial class SDivider
 {
     [Parameter] public string? Align { get; set; } = "center";
 
-    [Parameter] public string? Margin { get; set; }
+    [Parameter] 
+    public string? Margin { get; set; }
 
-    [Parameter] public bool Dashed { get; set; }
+    [Parameter] 
+    public bool Dashed { get; set; }
 
-    [Parameter] public RenderFragment? ChildContent { get; set; }
-
-    [Parameter] public string Layout { get; set; } = "horizontal";
+    [Parameter] 
+    public string Layout { get; set; } = "horizontal";
 
     private const string PrefixCls = "semi-divider";
 
@@ -19,7 +20,10 @@ public partial class SDivider
         CssProvider.CssApply(PrefixCls);
         CssProvider.CssApply(PrefixCls + "-horizontal");
         CssProvider.CssApply(PrefixCls + "-vertical");
-        CssProvider.CssApply(PrefixCls + "-dashed");
+        if (Dashed == false)
+        {
+            CssProvider.CssApply(PrefixCls + "-dashed");
+        }
         if (ChildContent != null && Layout == "horizontal")
         {
             CssProvider.CssApply(PrefixCls + "-with-text");

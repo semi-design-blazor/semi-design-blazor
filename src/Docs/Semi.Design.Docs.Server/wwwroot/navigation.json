@@ -49,6 +49,17 @@
           "title": "Typography 版式"
         }
       ]
+    },
+    {
+      "key": "3",
+      "title": "输入类",
+      "children": [
+        {
+          "key": "3-1",
+          "title": "Button 按钮",
+          "component": "Button-Index"
+        }
+      ]
     }
   ]
 }

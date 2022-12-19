@@ -49,8 +49,6 @@ public partial class SButton
     [Parameter]
     public string? Size { get; set; }
 
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
 
     private const string PrefixCls = "semi-button";
 

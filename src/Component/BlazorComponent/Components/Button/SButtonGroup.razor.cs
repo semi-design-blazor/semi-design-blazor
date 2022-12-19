@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.RenderTree;
-
-namespace BlazorComponent;
+﻿namespace BlazorComponent;
 
 public partial class SButtonGroup
 {
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
@@ -54,5 +49,4 @@ public partial class SButtonGroup
     {
         base.OnInitialized();
     }
-
 }
