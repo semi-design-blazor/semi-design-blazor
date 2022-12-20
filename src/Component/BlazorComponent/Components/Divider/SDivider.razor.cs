@@ -2,7 +2,8 @@
 
 public partial class SDivider
 {
-    [Parameter] public string? Align { get; set; } = "center";
+    [Parameter] 
+    public string? Align { get; set; } = "center";
 
     [Parameter] 
     public string? Margin { get; set; }
@@ -13,6 +14,9 @@ public partial class SDivider
     [Parameter] 
     public string? Layout { get; set; } 
 
+    /// <summary>
+    /// 当前组件的前缀
+    /// </summary>
     private const string PrefixCls = "semi-divider";
 
     protected override void OnInitialized()
