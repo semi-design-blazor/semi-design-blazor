@@ -12,6 +12,10 @@ public class ComponentCssProvider
     /// <returns></returns>
     public ComponentCssProvider CssApply(string name)
     {
+        if (_cssConfig.Any(x => x == name))
+        {
+            return this;
+        }
         _cssConfig.Add(name);
         return this;
     }

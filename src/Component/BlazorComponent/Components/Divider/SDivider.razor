@@ -3,7 +3,7 @@
 @inherits SDomComponentBase
 
 <div class="@CssProvider.GetClass()" style="@CssProvider.GetStyle()">
-    @if (ChildContent != null && Layout == "horizontal")
+    @if (ChildContent != null )
     {
         <span class="@(PrefixCls + "_inner-text")" x-semi-prop="children">
             @ChildContent

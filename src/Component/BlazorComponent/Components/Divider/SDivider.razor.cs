@@ -11,16 +11,24 @@ public partial class SDivider
     public bool Dashed { get; set; }
 
     [Parameter] 
-    public string Layout { get; set; } = "horizontal";
+    public string? Layout { get; set; } 
 
     private const string PrefixCls = "semi-divider";
 
     protected override void OnInitialized()
     {
         CssProvider.CssApply(PrefixCls);
-        CssProvider.CssApply(PrefixCls + "-horizontal");
-        CssProvider.CssApply(PrefixCls + "-vertical");
-        if (Dashed == false)
+        if (string.IsNullOrEmpty(Layout))
+        {
+            Layout = "horizontal";
+        }
+
+        if(Layout != "vertical")
+        {
+            CssProvider.CssApply(PrefixCls + "-horizontal");
+        }
+
+        if (Dashed == true)
         {
             CssProvider.CssApply(PrefixCls + "-dashed");
         }
@@ -34,11 +42,13 @@ public partial class SDivider
         {
             if (Layout == "vertical")
             {
+                CssProvider.CssApply(PrefixCls + "-vertical");
                 CssProvider.StyleApply("margin-left:" + Margin);
                 CssProvider.StyleApply("margin-right:" + Margin);
             }
             else if(Layout == "horizontal")
             {
+                CssProvider.CssApply(PrefixCls + "-horizontal");
                 CssProvider.StyleApply("margin-top:" + Margin);
                 CssProvider.StyleApply("margin-bottom:" + Margin);
             }
