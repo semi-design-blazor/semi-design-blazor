@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Semi.Design.Docs.Server.Options;
+using Semi.Design.Shared.Options;
 using Token.Events;
 
-namespace Semi.Design.Docs.Server.Shared;
+namespace Semi.Design.Shared.Shared;
 
 public partial class Menu
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Semi.Design.Docs.Server.Options;
+namespace Semi.Design.Shared.Options;
 
 public class MenuTree
 {

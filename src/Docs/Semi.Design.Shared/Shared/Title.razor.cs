@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Semi.Design.Blazor;
-using Token.Events;
 
-namespace Semi.Design.Docs.Server.Shared;
+namespace Semi.Design.Shared.Shared;
 
 public partial class Title
 {

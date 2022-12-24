@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Web;
 using Token.Events;
 
-namespace Semi.Design.Docs.Server.Pages;
+namespace Semi.Design.Shared.Pages;
 
 public partial class Index
 {
@@ -16,6 +16,9 @@ public partial class Index
     public required IKeyLoadEventBus KeyLoadEventBus { get; set; }
 
     #endregion
+
+    [Parameter]
+    public string? Component { get; set; }
 
     public Type? ComponentType { get; set; }
 
@@ -60,6 +63,7 @@ public partial class Index
         var types = Assembly.GetExecutingAssembly()
             .GetTypes()
             .FirstOrDefault(x => x.FullName == $"Semi.Design.Docs.Server.Component.{path.Replace('-', '.')}");
+
         if (types != null)
         {
             ComponentType = types;

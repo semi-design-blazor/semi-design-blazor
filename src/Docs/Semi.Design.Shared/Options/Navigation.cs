@@ -1,4 +1,4 @@
-﻿namespace Semi.Design.Docs.Server.Options;
+﻿namespace Semi.Design.Shared.Options;
 
 public class Navigation
 {
@@ -6,9 +6,9 @@ public class Navigation
 
     public string? Company { get; set; }
 
-    public required string Key { get; set; }
+    public string Key { get; set; }
 
-    public required string Title { get; set; }
+    public string Title { get; set; }
 
     public MenuTree[]? Menu { get; set; }
 }
