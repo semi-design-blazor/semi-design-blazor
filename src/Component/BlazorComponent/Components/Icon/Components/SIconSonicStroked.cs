@@ -1,0 +1,30 @@
+using Microsoft.AspNetCore.Components.Rendering;
+namespace BlazorComponent;
+public class SIconSonicStroked: SIcon
+{
+    protected override void OnInitialized()
+    {
+		Svg = builder =>
+		{
+builder.OpenElement(0, "svg");
+builder.AddAttribute(1, "viewBox","0 0 24 24");
+builder.AddAttribute(2, "fill","none");
+builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
+builder.AddAttribute(4, "width","1em");
+builder.AddAttribute(5, "height","1em");
+builder.AddAttribute(6, "focusable","false");
+builder.AddAttribute(7, "aria-hidden","true");
+builder.AddMarkupContent(8, """
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12 2C12.5523 2 13 2.44772 13 3V21C13 21.5523 12.5523 22 12 22C11.4477 22 11 21.5523 11 21V3C11 2.44772 11.4477 2 12 2ZM17 4.99988C17.5523 4.99988 18 5.44759 18 5.99988V17.9999C18 18.5522 17.5523 18.9999 17 18.9999C16.4477 18.9999 16 18.5522 16 17.9999V5.99988C16 5.44759 16.4477 4.99988 17 4.99988ZM3 8.99988C3 8.44759 2.55228 7.99988 2 7.99988C1.44772 7.99988 1 8.44759 1 8.99988V14.9999C1 15.5522 1.44772 15.9999 2 15.9999C2.55228 15.9999 3 15.5522 3 14.9999V8.99988ZM22 7.99988C22.5523 7.99988 23 8.44759 23 8.99988V14.9999C23 15.5522 22.5523 15.9999 22 15.9999C21.4477 15.9999 21 15.5522 21 14.9999V8.99988C21 8.44759 21.4477 7.99988 22 7.99988ZM8 5.99988C8 5.44759 7.55228 4.99988 7 4.99988C6.44772 4.99988 6 5.44759 6 5.99988V17.9999C6 18.5522 6.44772 18.9999 7 18.9999C7.55228 18.9999 8 18.5522 8 17.9999V5.99988Z"
+                fill="currentColor"
+            />
+        """);
+builder.CloseElement();
+};
+Label ="sonic_stroked";
+        base.OnInitialized();
+    }
+}
