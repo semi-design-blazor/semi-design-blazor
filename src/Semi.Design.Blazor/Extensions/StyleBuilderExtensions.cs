@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace BlazorComponent
+﻿namespace BlazorComponent
 {
     public static class StyleBuilderExtensions
     {
