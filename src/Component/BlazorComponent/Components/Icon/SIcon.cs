@@ -134,7 +134,7 @@ public class SIcon:  SDomComponentBase
 /// <summary>
 /// icon size
 /// </summary>
-public enum IconSize
+public enum IconSize: int
 {
     Default = 0,    //// 16x16
     Inherit = 1,
