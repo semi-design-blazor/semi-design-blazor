@@ -16,10 +16,4 @@
     <ProjectReference Include="..\Semi.Design.Shared\Semi.Design.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="wwwroot\navigation.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>
