@@ -73,10 +73,17 @@ public partial class SMonacoEditor : SDomComponentBase, IAsyncDisposable
     private async void GetCode()
     {
         var client = httpClientFactory.CreateClient("docs");
-        var value = await client.GetStringAsync("_content/Semi.Design.Shared/pages/" + Component);
-        if (!string.IsNullOrEmpty(value))
+        try
         {
-            SetValue(value);
+
+            var value = await client.GetStringAsync("_content/Semi.Design.Shared/pages/" + Component);
+            if (!string.IsNullOrEmpty(value))
+            {
+                SetValue(value);
+            }
+        }
+        catch
+        {
         }
     }
 
