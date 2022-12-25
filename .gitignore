@@ -472,3 +472,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /src/.idea
+/src/Docs/Semi.Design.Shared/wwwroot/pages
