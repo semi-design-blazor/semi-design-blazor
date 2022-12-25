@@ -1,0 +1,3 @@
+﻿<SMonacoEditor Component="button/BasicUse.txt">
+    <BasicUse/>
+</SMonacoEditor>
