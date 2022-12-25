@@ -59,6 +59,11 @@
           "key": "3-1",
           "title": "Button 按钮",
           "component": "Button-Index"
+        },
+        {
+          "key": "4-1",
+          "title": "Input 输入框",
+          "component": "Input-Index"
         }
       ]
     }
