@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.IO;
 using System.Reflection;
-using System.Web;
 using Token.Events;
 
 namespace Semi.Design.Shared.Pages;
@@ -24,47 +24,26 @@ public partial class Index
 
     protected override void OnInitialized()
     {
-        KeyLoadEventBus.Subscription("Component", (obj) =>
-        {
-            var value = obj as string;
-            if (value != null)
-            {
-                LoadComponent(value);
-            }
-        });
-
-        var uri = NavigationManager.Uri.Split("?");
-        string value = string.Empty;
-        if (uri.Length <= 1)
-        {
-            return;
-        }
-
-        value = uri[1];
-
-        var query = HttpUtility.ParseQueryString(value);
-        var path = query["path"];
-        if (!string.IsNullOrEmpty(path))
-        {
-            LoadComponent(path);
-        }
-
         base.OnInitialized();
     }
 
-
-    public void LoadComponent(string path)
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
-        if (string.IsNullOrEmpty(path))
+        await base.SetParametersAsync(parameters);
+        LoadComponent();
+    }
+
+    public async void LoadComponent()
+    {
+        if (string.IsNullOrEmpty(Component))
         {
             return;
         }
 
         var types = Assembly.GetExecutingAssembly()
-            .GetTypes()
-            .FirstOrDefault(x => x.FullName == $"Semi.Design.Docs.Server.Component.{path.Replace('-', '.')}");
-
-        if (types != null)
+        .GetTypes()
+            .FirstOrDefault(x => x.FullName.ToLower() == $"Semi.Design.Shared.Component.{Component?.Replace('-', '.')}".ToLower());
+        if (types != null && types != ComponentType)
         {
             ComponentType = types;
             _ = InvokeAsync(StateHasChanged);

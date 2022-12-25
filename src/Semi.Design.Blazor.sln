@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponent", "Componen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.Docs.Server", "Docs\Semi.Design.Docs.Server\Semi.Design.Docs.Server.csproj", "{2E48FFAF-B4C7-463A-9113-8BCE2BD89C00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semi.Design.Shared", "Docs\Semi.Design.Shared\Semi.Design.Shared.csproj", "{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.Shared", "Docs\Semi.Design.Shared\Semi.Design.Shared.csproj", "{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

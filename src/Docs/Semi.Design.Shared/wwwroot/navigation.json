@@ -11,7 +11,7 @@
         {
           "key": "1-1",
           "title": "Introduction 介绍",
-          "component": "Divider-Index"
+          "component": "button-index"
         }
       ]
     },
@@ -22,7 +22,7 @@
         {
           "key": "2-1",
           "title": "Divider 分割线",
-          "component": "Divider-Index"
+          "component": "divider-index"
         },
         {
           "key": "2-2",
@@ -31,7 +31,7 @@
         {
           "key": "2-3",
           "title": "Icon 图标",
-          "component": "Icon-Index"
+          "component": "icon-index"
         },
         {
           "key": "2-4",
@@ -58,7 +58,7 @@
         {
           "key": "3-1",
           "title": "Button 按钮",
-          "component": "Button-Index"
+          "component": "button-index"
         }
       ]
     }

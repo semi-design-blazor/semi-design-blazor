@@ -19,17 +19,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="wwwroot\pages\components\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\Semi.Design.Blazor\Semi.Design.Blazor.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="wwwroot\navigation.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
+		<Content Update="wwwroot\navigation.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
+	<ItemGroup>
+		<ExamplesSourceFile Include="Component\**\*.razor" />
+	</ItemGroup>
+
+	<Target Name="CopyExmaplesToTxt" AfterTargets="Build">
+		<Copy SourceFiles="@(ExamplesSourceFile)" DestinationFiles="wwwroot\pages\%(RecursiveDir)\%(Filename).txt" />
+	</Target>
 </Project>

@@ -26,9 +26,9 @@ public partial class Menu
         StateHasChanged();
     }
 
-    public async void GoTo(string path)
+    public async void GoTo(string component)
     {
-        await KeyLoadEventBus.PushAsync("Component", path);
-        NavigationManager.NavigateTo("?path=" + path);
+        await KeyLoadEventBus.PushAsync("Component", component);
+        NavigationManager.NavigateTo("/component/" + component);
     }
 }
