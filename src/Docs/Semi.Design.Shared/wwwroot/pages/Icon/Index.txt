@@ -1,5 +1,5 @@
-﻿
+﻿@using Semi.Design.Shared.Component.icon
 
-<SMonacoEditor Component="icon/BasicUse.txt">
+<SMonacoEditor Component="Icon/BasicUse.txt">
     <BasicUse/>
 </SMonacoEditor>

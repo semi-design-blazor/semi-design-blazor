@@ -6,7 +6,7 @@ public class EditorOptions
     /// The initial Language of the auto created model in the editor.
     /// To not automatically create a model, use `model: null`.
     /// </summary>
-    public string Language { get; set; }
+    public string Language { get; set; } = "html";
 
     /// <summary>
     /// This editor is used inside a diff editor.

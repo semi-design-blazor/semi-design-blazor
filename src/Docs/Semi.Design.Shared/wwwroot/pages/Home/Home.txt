@@ -2,7 +2,7 @@
 
 <h3>Home</h3>
 
-<SMonacoEditor Component="button/index.txt">
+<SMonacoEditor Component="Button/Index.txt">
     <SButtonGroup>
         <SButton>测试</SButton>
         <SButton>测试</SButton>

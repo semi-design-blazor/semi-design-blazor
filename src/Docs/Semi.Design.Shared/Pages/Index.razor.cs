@@ -25,6 +25,10 @@ public partial class Index
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        KeyLoadEventBus.Subscription("Component", (value) =>
+        {
+            LoadComponent((string)value);
+        });
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -33,11 +37,16 @@ public partial class Index
         LoadComponent();
     }
 
-    public async void LoadComponent()
+    public async void LoadComponent(string? component = null)
     {
-        if (string.IsNullOrEmpty(Component))
+        if (string.IsNullOrEmpty(Component) && string.IsNullOrEmpty(component))
         {
             return;
+        }
+
+        if (!string.IsNullOrEmpty(component))
+        {
+            Component = component;
         }
 
         var types = Assembly.GetExecutingAssembly()

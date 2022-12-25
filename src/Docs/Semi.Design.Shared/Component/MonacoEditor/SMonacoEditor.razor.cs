@@ -17,7 +17,7 @@ public partial class SMonacoEditor : SDomComponentBase, IAsyncDisposable
     public EditorOptions EditorOptions { get; set; } = new();
 
     [Parameter]
-    public string Width { get; set; } = "100%";
+    public string Width { get; set; } = "500px";
 
     [Parameter]
     public string Height { get; set; } = "300px";
