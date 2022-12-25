@@ -1,0 +1,11 @@
+﻿@page "/"
+@page "/component/{Component?}"
+
+@if (ComponentType != null)
+{
+    <DynamicComponent Type="@ComponentType" />
+}
+else
+{
+    <Home/>
+}

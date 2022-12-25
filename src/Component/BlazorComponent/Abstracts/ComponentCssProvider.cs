@@ -56,5 +56,5 @@ public class ComponentCssProvider
     /// </summary>
     /// <returns></returns>
     public string GetStyle()
-        => string.Join(' ', _styleConfig);
+        => string.Join(';', _styleConfig);
 }

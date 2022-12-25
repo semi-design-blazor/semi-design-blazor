@@ -1,0 +1,66 @@
+{
+  "key": "0",
+  "logo": "logo.png",
+  "company": "Semi-Design-Blazor",
+  "title": "Semi-Design-Blazor",
+  "menu": [
+    {
+      "key": "1",
+      "title": "开始",
+      "children": [
+        {
+          "key": "1-1",
+          "title": "Introduction 介绍",
+          "component": "button-index"
+        }
+      ]
+    },
+    {
+      "key": "2",
+      "title": "基础",
+      "children": [
+        {
+          "key": "2-1",
+          "title": "Divider 分割线",
+          "component": "divider-index"
+        },
+        {
+          "key": "2-2",
+          "title": "Grid 栅格"
+        },
+        {
+          "key": "2-3",
+          "title": "Icon 图标",
+          "component": "icon-index"
+        },
+        {
+          "key": "2-4",
+          "title": "Layout 布局"
+        },
+        {
+          "key": "2-5",
+          "title": "Tokens 设计变量"
+        },
+        {
+          "key": "2-6",
+          "title": "Space 间距"
+        },
+        {
+          "key": "2-7",
+          "title": "Typography 版式"
+        }
+      ]
+    },
+    {
+      "key": "3",
+      "title": "输入类",
+      "children": [
+        {
+          "key": "3-1",
+          "title": "Button 按钮",
+          "component": "button-index"
+        }
+      ]
+    }
+  ]
+}
