@@ -1,3 +1,0 @@
-﻿<SMonacoEditor Component="divider/BasicUse.txt">
-    <BasicUse/>
-</SMonacoEditor>
