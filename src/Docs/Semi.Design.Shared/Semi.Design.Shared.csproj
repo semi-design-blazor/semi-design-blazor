@@ -32,8 +32,8 @@
 		<ExamplesSourceFile Include="Component\**\*.razor" />
 	</ItemGroup>
 
-	<Target Name="CopyExmaplesToTxt" AfterTargets="Build">
+	<!--<Target Name="CopyExmaplesToTxt" AfterTargets="Build">
 		<Copy SourceFiles="@(ExamplesSourceFile)" DestinationFiles="wwwroot\pages\%(RecursiveDir)\%(Filename).txt" />
-	</Target>
+	</Target>-->
 	
 </Project>
