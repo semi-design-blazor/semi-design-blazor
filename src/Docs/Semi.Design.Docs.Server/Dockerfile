@@ -13,10 +13,10 @@ COPY ["Component/BlazorComponent/BlazorComponent.csproj", "Component/BlazorCompo
 RUN dotnet restore "Docs/Semi.Design.Docs.Server/Semi.Design.Docs.Server.csproj"
 COPY . .
 WORKDIR "/src/Docs/Semi.Design.Docs.Server"
-RUN dotnet build "Semi.Design.Docs.Server.csproj" -c Release --os linux -o /app/build
+RUN dotnet build "Semi.Design.Docs.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Semi.Design.Docs.Server.csproj" -c Release --os linux -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Semi.Design.Docs.Server.csproj" -c Release  -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
