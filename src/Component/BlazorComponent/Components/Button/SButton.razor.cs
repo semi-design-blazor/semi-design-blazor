@@ -70,12 +70,12 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Size))
         {
-            CssProvider?.CssApply(PrefixCls + Size.ToLower());
+            CssProvider?.CssApply(PrefixCls + "-size-" + Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
         {
-            CssProvider?.CssApply(PrefixCls + Theme.ToLower());
+            CssProvider?.CssApply(PrefixCls + "-" + Theme.ToLower());
         }
         else
         {
@@ -102,6 +102,12 @@ public partial class SButton
         {
             CssProvider?.CssApply(PrefixCls + "-primary");
         }
+
+        if (Block)
+        {
+            CssProvider?.CssApply(PrefixCls + "-block");
+        }
+
         base.OnInitialized();
     }
 
