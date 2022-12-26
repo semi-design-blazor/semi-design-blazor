@@ -6,11 +6,21 @@
     @if(IconPosition == "left")
     {
         @Icon
-        @ChildContent
+        if (@ChildContent != null)
+        {
+            <span class="@BtnTextCls.GetClass()" x-semi-prop="@XSemiProp">
+                @ChildContent
+            </span>
+        }
     }
     else
     {
-        @ChildContent
+        if (@ChildContent != null)
+        {
+            <span class="@BtnTextCls.GetClass()" x-semi-prop="@XSemiProp">
+                @ChildContent
+            </span>
+        }
         @Icon
     }
 </SButton>
