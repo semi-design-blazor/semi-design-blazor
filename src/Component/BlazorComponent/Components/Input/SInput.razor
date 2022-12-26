@@ -1,0 +1,582 @@
+﻿@namespace BlazorComponent
+
+@using BlazorComponent.Extensions
+@inherits SDomComponentBase
+
+<div class="@(Class + " " + _wrapperCls.GetClass())"
+     style="@Style"
+     onmouseleave="@HandleMouseLeave"
+     onclick="@OnClick"
+     onmouseenter="@HandleMouseOver">
+
+    @RenderPrepend
+    
+    @RenderPrefix
+    
+    <input
+        style="@Style"
+        @ref="inputControl"
+        autofocus="@AutoFocus"
+        class="@CssProvider.GetClass()"
+        disabled="@Disabled"
+        readonly="@ReadOnly"
+        @attributes="Attributes"
+        type="@HandlerType"
+        placeholder="@Placeholder"
+        oninput="@OnInput"
+        onfocus="@OnFocus"
+        onblur="@OnBlur"
+        onkeyup="@OnKeyUp"
+        onkeydown="@OnKeyDown"
+        onkeypress="@OnKeyPress"
+        value="@Value"
+        onchange="@OnChange"
+        aria-invalid="@(ValidateStatus == ValidateStatus.Error)" />
+    
+    @RenderClearBtn
+    @RenderSuffix
+    @RenderModeBtn
+    @RenderAppend
+</div>
+
+@code
+{
+    private readonly ComponentCssProvider _wrapperCls = new ComponentCssProvider();
+    private bool shouldPreventDefault = false;
+    private bool shouldModeBtnMouseDownPreventDefault = false;
+    private bool shouldModeBtnMouseUpPreventDefault = false;
+    
+    private string value = string.Empty;
+    private string cacheValue = string.Empty;
+    private bool isFocus = false;
+    private bool isHovering = false;
+    private bool eyeClosed;
+
+    private ElementReference inputControl;
+    
+    private string HandlerType
+    {
+        get
+        {
+            if (Mode == InputMode.Password)
+                return eyeClosed ? "password" : "text";
+            return Type;
+        }
+    }
+
+    /// <summary>
+    /// allow clear
+    /// </summary>
+    private bool IsAllowClear => !string.IsNullOrWhiteSpace(Value) && ShowClear && !Disabled && (isFocus || isHovering);
+
+    public bool Hide { get; set; } = false;
+
+
+    #region parameter
+
+    #region property
+
+    /// <summary>
+    /// min length
+    /// </summary>
+    [Parameter]
+    public uint? MinLength { get; set; }
+
+    [Parameter]
+    public uint? MaxLength { get; set; }
+
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Labellebdy { get; set; }
+
+    [Parameter]
+    public string ErrorMessage { get; set; }
+
+    [Parameter]
+    public string Describedby { get; set; }
+
+    [Parameter]
+    public bool Required { get; set; }
+    
+    [Parameter]
+    public bool Invalid { get; set; }
+
+    /// <summary>
+    /// before tag
+    /// </summary>
+    [Parameter]
+    public RenderFragment? AddonBefore { get; set; }
+
+    /// <summary>
+    /// after tag
+    /// </summary>
+    [Parameter]
+    public RenderFragment? AddonAfter { get; set; }
+
+    /// <summary>
+    /// clear button icon
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ClearIcon { get; set; }
+
+    /// <summary>
+    /// prefix
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Prefix { get; set; }
+
+    /// <summary>
+    /// suffix
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Suffix { get; set; }
+
+    /// <summary>
+    /// mode 
+    /// </summary>
+    [Parameter]
+    public InputMode Mode { get; set; } = InputMode.Normal;
+
+    /// <summary>
+    /// value
+    /// </summary>
+    [Parameter]
+    public string? Value { get; set; }
+
+    /// <summary>
+    /// default value
+    /// </summary>
+    [Parameter]
+    public string? DefaultValue { get; set; }
+
+    /// <summary>
+    /// disabled
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; } = false;
+
+    /// <summary>
+    /// read only
+    /// </summary>
+    [Parameter]
+    public bool ReadOnly { get; set; } = false;
+
+    /// <summary>
+    /// auto focused
+    /// </summary>
+    [Parameter]
+    public bool AutoFocus { get; set; } = true;
+
+    [Parameter]
+    public string Type { get; set; } = "text";
+    
+    /// <summary>
+    /// show clear
+    /// </summary>
+    [Parameter]
+    public bool ShowClear { get; set; } = false;
+
+    /// <summary>
+    /// hidden suffix
+    /// </summary>
+    [Parameter]
+    public bool HideSuffix { get; set; } = false;
+
+    /// <summary>
+    /// placeholder
+    /// </summary>
+    [Parameter]
+    public string? Placeholder { get; set; }
+
+    /// <summary>
+    /// size
+    /// </summary>
+    [Parameter]
+    public SizeType Size { get; set; } = SizeType.Default;
+    
+    /// <summary>
+    /// validate status
+    /// </summary>
+    [Parameter]
+    public ValidateStatus ValidateStatus { get; set; } = ValidateStatus.Default;
+
+    /// <summary>
+    /// inset label
+    /// </summary>
+    [Parameter]
+    public RenderFragment? InsetLabel { get; set; }
+
+    /// <summary>
+    /// inset label id
+    /// </summary>
+    [Parameter]
+    public string InsetLabelId { get; set; } = default;
+
+    [Parameter]
+    public string? InputStyle { get; set; }
+
+    [Parameter]
+    public bool PreventScroll { get; set; } = false;
+
+    #endregion property
+
+    #region event
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClear { get; set; }
+
+    [Parameter]
+    public EventCallback<ChangeEventArgs> OnChange { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnBlur { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnFocus { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnInput { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyDown { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyUp { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyPress { get; set; }
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnEnterPress { get; set; }
+
+    [Parameter]
+    public Func<string, int>? GetValueLength { get; set; }
+
+    #endregion event
+    
+    #endregion parameter
+
+    private void HandleMouseOver(MouseEventArgs e)
+    {
+        isHovering = true;
+    }
+
+    private void HandleMouseLeave(MouseEventArgs e)
+    {
+        isHovering = false;
+    }
+
+    private async Task OnClick(MouseEventArgs e)
+    {
+        if (Disabled || isFocus)
+            return;
+        
+        // TODO: 判断是否是当前控件
+        await inputControl.FocusAsync(PreventScroll); //FocusInput();
+        isFocus = true;
+    }
+    
+    #region render
+
+    private RenderFragment RenderPrefix
+    {
+        get
+        {
+            var labelNode = Prefix ?? InsetLabel;
+            if (labelNode is null)
+                return null;
+            var cssProvider = new ComponentCssProvider();
+
+            cssProvider.CssApply(SInputCons.PrefixWrapperStyle.Prefix);
+
+            cssProvider.ApplyClassNameIf(InsetLabel != null, SInputCons.PrefixWrapperStyle.InsetLabel)
+                .ApplyClassNameIf(labelNode.IsSemiIcon(), SInputCons.PrefixWrapperStyle.PrefixIcon)
+                .ApplyClassNameIf(labelNode.IsString(), SInputCons.PrefixWrapperStyle.PrefixText);
+            var r = labelNode.IsString();
+            var cls = cssProvider.GetClass();
+
+            return __builder =>
+            {
+                <div
+                    class="@cls"
+                    @onmousedown="HandlePreventMouseDown"
+                    @onclick="HandleClickPrefixOrSuffix"
+                    id="@InsetLabelId"
+                    x-semi-prop="prefix,insetLabel">
+                    @labelNode
+                </div>
+            };
+        }
+    }
+
+    private RenderFragment RenderPrepend
+    {
+        get
+        {
+            if (AddonBefore is null)
+                return null;
+            
+            var prefixWrapperCls = new ComponentCssProvider();
+
+            prefixWrapperCls.CssApply(SInputCons.PrependWrapperStyle.Prepend);
+
+            prefixWrapperCls.ApplyClassNameIf(AddonBefore.IsString(), SInputCons.PrependWrapperStyle.PrependText)
+                .ApplyClassNameIf(AddonBefore.IsSemiIcon(), SInputCons.PrependWrapperStyle.PrependIcon);
+            var className = prefixWrapperCls.GetClass();
+            return __builder =>
+            {
+                <div class="@className" x-semi-prop="addonBefore">
+                    @AddonBefore
+                </div>
+            };
+        }
+    }
+
+    private RenderFragment RenderClearBtn
+    {
+        get
+        {
+            var isAllowClear = !string.IsNullOrWhiteSpace(Value) && ShowClear && !Disabled && (isFocus || isHovering);
+            if (!isAllowClear)
+                return null;
+
+            ElementReference target;
+
+            return __builder =>
+            {
+                <div class="@SInputCons.ClearBtnStyle"
+                     @ref="target"
+                     @onmousedown="@(e => HandleClear(e, target))"> 
+                    @if (ClearIcon != null)
+                    {
+                        @ClearIcon
+                    }
+                    else
+                    {
+                        <SIconClear />
+                    }
+                </div>
+            };
+        }
+    }
+
+    private RenderFragment RenderSuffix
+    {
+        get
+        {
+            if (Suffix is null)
+                return null;
+            
+            var cssProvider = new ComponentCssProvider();
+
+            cssProvider.CssApply(SInputCons.SuffixWrapperStyle.Suffix);
+
+            cssProvider.ApplyClassNameIf(Suffix.IsString(), SInputCons.SuffixWrapperStyle.SuffixText)
+                .ApplyClassNameIf(Suffix.IsSemiIcon(), SInputCons.SuffixWrapperStyle.SuffixIcon)
+                .ApplyClassNameIf(ShowClearBtn && HideSuffix,   SInputCons.SuffixWrapperStyle.SuffixHidden);
+
+            return __builder =>
+            {
+                <div class="@cssProvider.GetClass()"
+                     onmousedown="@HandlePreventMouseDown"
+                     onclick="@HandleClickPrefixOrSuffix"
+                     x-semi-prop="suffix">
+                    @Suffix
+                </div>
+            };
+        }
+    }
+
+    private RenderFragment RenderAppend
+    {
+        get
+        {
+
+            if (AddonAfter is null)
+                return null;
+            
+            var prefixWrapperCls = new ComponentCssProvider();
+
+            prefixWrapperCls.CssApply(SInputCons.AppendWrapperStyle.Prepend);
+
+            prefixWrapperCls.ApplyClassNameIf(AddonAfter.IsString(), SInputCons.AppendWrapperStyle.PrependText)
+                .ApplyClassNameIf(AddonAfter.IsSemiIcon(), SInputCons.AppendWrapperStyle.PrependIcon);
+            var className = prefixWrapperCls.GetClass();
+            return __builder =>
+            {
+                <div class="@className" x-semi-prop="addonAfter">
+                    @AddonAfter
+                </div>
+            };
+        }
+    }
+
+    private RenderFragment RenderModeBtn
+    {
+        get
+        {
+            if (Mode != InputMode.Password || Disabled)
+            {
+                return null;
+            }
+
+            var ariaLabel = eyeClosed ? "Show password" : "Hidden password";
+
+            return __builder =>
+            {
+                <div role="button"
+                     tabindex="0"
+                     aria-label="@ariaLabel"
+                     class="@SInputCons.ModeBtnStyle"
+                     onclick="@HandleClickEye"
+                     @onmousedown="@(e=> shouldModeBtnMouseDownPreventDefault = true)"
+                     @onmouseup="@(e => shouldModeBtnMouseUpPreventDefault = true)"
+                     @onmousedown:preventDefault="shouldModeBtnMouseDownPreventDefault"
+                     @onmouseup:preventDefault="shouldModeBtnMouseUpPreventDefault"
+                     onkeypress="@HandleModeEnterPress"
+                     >
+                    @if (eyeClosed)
+                    {
+                        <SIconEyeClosedSolid />
+                    }
+                    else
+                    {
+                        <SIconEyeOpened />
+                    }
+                </div>
+            };
+        }
+    }
+    
+    #endregion
+    
+    private bool ShowClearBtn => !string.IsNullOrWhiteSpace(Value) && ShowClear && !Disabled && (isFocus || isHovering);
+
+
+    protected override void OnInitialized()
+    {
+        eyeClosed = Mode == InputMode.Password;
+        // wrapper cls
+
+        _wrapperCls.CssApply(SInputCons.WrapperPrefixCls);
+        _wrapperCls.ApplyClassNameIf(this.Prefix != null || InsetLabel != null, SInputCons.WrapperStyle.Prefix);
+
+        _wrapperCls.ApplyClassNameIf(this.Suffix != null, SInputCons.WrapperStyle.Suffix);
+        _wrapperCls.ApplyClassNameIf(HideSuffix && ShowClearBtn, SInputCons.WrapperStyle.SuffixHidden);
+
+        _wrapperCls.ApplyClassNameIf(Suffix is SIcon, SInputCons.WrapperStyle.SuffixIcon);
+        _wrapperCls.ApplyClassNameIf(AddonBefore is not null, SInputCons.WrapperStyle.WithAppend);
+        _wrapperCls.ApplyClassNameIf(AddonAfter is not null, SInputCons.WrapperStyle.WithPrepend);
+        _wrapperCls.ApplyClassNameIf(AddonBefore != null && AddonAfter is null, SInputCons.WrapperStyle.WithAppendOnly);
+        _wrapperCls.ApplyClassNameIf(AddonBefore is null && AddonAfter is not null, SInputCons.WrapperStyle.WithPrependOnly);
+
+        _wrapperCls.ApplyClassNameIf(ReadOnly, SInputCons.WrapperStyle.Readonly);
+        _wrapperCls.ApplyClassNameIf(Disabled, SInputCons.WrapperStyle.Disabled);
+        _wrapperCls.ApplyClassNameIf(ValidateStatus == ValidateStatus.Warning, SInputCons.WrapperStyle.Warning);
+        _wrapperCls.ApplyClassNameIf(ValidateStatus == ValidateStatus.Error, SInputCons.WrapperStyle.Error);
+        _wrapperCls.ApplyClassNameIf(isFocus, SInputCons.WrapperStyle.Focus);
+        _wrapperCls.ApplyClassNameIf(ShowClear, SInputCons.WrapperStyle.Clearable);
+        _wrapperCls.ApplyClassNameIf(Mode == InputMode.Password, SInputCons.WrapperStyle.ModeBtn);
+        _wrapperCls.ApplyClassNameIf(Hide, SInputCons.WrapperStyle.Hidden);
+        _wrapperCls.ApplyClassNameIf(Size == SizeType.Default, SInputCons.WrapperStyle.Default);
+        _wrapperCls.ApplyClassNameIf(Size == SizeType.Small, SInputCons.WrapperStyle.Small);
+        _wrapperCls.ApplyClassNameIf(Size == SizeType.Large, SInputCons.WrapperStyle.Large);
+        
+        
+        
+
+        // input cls
+        CssProvider.CssApply(SInputCons.DefaultPrefixCls);
+        CssProvider.ApplyClassNameIf(Size == SizeType.Default, SInputCons.DefaultStyle.Default);
+        CssProvider.ApplyClassNameIf(Size == SizeType.Small, SInputCons.DefaultStyle.Small);
+        CssProvider.ApplyClassNameIf(Size == SizeType.Large, SInputCons.DefaultStyle.Large);
+        CssProvider.ApplyClassNameIf(Disabled, SInputCons.DefaultStyle.Disabled);
+        CssProvider.ApplyClassNameIf(IsAllowClear, SInputCons.DefaultStyle.SiblingClearBtn);
+        CssProvider.ApplyClassNameIf(Mode == InputMode.Password, SInputCons.DefaultStyle.SiblingModeBtn);
+
+        if (!this.IsControlComponent())
+            Value = DefaultValue;
+
+        if (!string.IsNullOrWhiteSpace(Label))
+        {
+            Attributes.Add("aria-label", true);
+        }
+        if (!string.IsNullOrWhiteSpace(Labellebdy))
+        {
+            Attributes.Add("aria-labelledby", true);
+        }
+        if (!string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            Attributes.Add("aria-errormessage", true);
+        }
+        if (!string.IsNullOrWhiteSpace(Describedby))
+        {
+            Attributes.Add("aria-describedby", true);
+        }
+        if (!Invalid)
+        {
+            Attributes.Add("aria-invalid", true);
+        }
+        if (Required)
+        {
+            Attributes.Add("aria-required", true);
+        }
+        
+        base.OnInitialized();
+    }
+
+    private async Task HandlePreventMouseDown(MouseEventArgs e)
+    {
+        shouldPreventDefault = true;
+    }
+
+    private async Task HandleClickPrefixOrSuffix(MouseEventArgs e)
+    {
+        if (!Disabled && !isFocus)
+        {
+            await inputControl.FocusAsync(PreventScroll); //FocusInput();
+            isFocus = true;
+        }
+        StateHasChanged();
+    }
+
+    private async Task HandleModeEnterPress(KeyboardEventArgs e)
+    {
+        if (e.Key is "Enter" or " ")
+        {
+            await HandlePreventMouseDown(null);
+            await HandleClickEye(null);
+        }
+    }
+
+    private async Task HandleClickEye(MouseEventArgs e)
+    {
+        await inputControl.FocusAsync(PreventScroll);
+        isFocus = true;
+        eyeClosed = !eyeClosed;
+    }
+
+    private async Task HandleClear(MouseEventArgs e, ElementReference reference)
+    {
+        var value = "";
+        if (!IsControlComponent("value"))
+        {
+            Value = "";
+        }
+        isFocus = false;
+        StateHasChanged();
+        // TODO: file: foundation.ts line: 177
+        // __fromClearBtn = true
+        // stopPropagation
+    }
+
+    private bool IsControlComponent(string key = "value")
+    {
+        var properties = this.GetType().GetProperties();
+        return properties.Any(p => p.Name == key);
+    }
+
+}

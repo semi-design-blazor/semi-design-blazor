@@ -33,7 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\pages\" />
+	  <Folder Include="wwwroot\pages\Input\" />
 	</ItemGroup>
 
 	<!--<Target Name="CopyExmaplesToTxt" AfterTargets="Build">
