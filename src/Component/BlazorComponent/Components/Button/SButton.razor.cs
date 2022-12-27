@@ -75,7 +75,7 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Theme))
         {
-            CssProvider?.CssApply(PrefixCls + Theme.ToLower());
+            CssProvider?.CssApply(PrefixCls + "-"+Theme.ToLower());
         }
         else
         {
