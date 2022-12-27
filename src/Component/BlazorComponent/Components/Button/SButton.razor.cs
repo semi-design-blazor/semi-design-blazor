@@ -58,7 +58,7 @@ public partial class SButton
 
         if (Disabled)
         {
-            CssProvider?.CssApply("semi-disabled");
+            CssProvider?.CssApply(PrefixCls + "-disabled");
         }
 
         CssProvider.CssApply(PrefixCls);
