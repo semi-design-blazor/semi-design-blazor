@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.RenderTree;
-
-namespace BlazorComponent;
+﻿namespace BlazorComponent;
 
 public partial class SButtonGroup
 {
@@ -17,6 +14,15 @@ public partial class SButtonGroup
 
     [Parameter]
     public string? Type { get; set; }
+
+    private ParameterView _parameters;
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        _parameters = parameters;
+
+        await base.SetParametersAsync(parameters);
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -39,5 +45,8 @@ public partial class SButtonGroup
         await base.OnInitializedAsync();
     }
 
-
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
 }
