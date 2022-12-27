@@ -1,7 +1,47 @@
-﻿namespace BlazorComponent;
+﻿using Microsoft.AspNetCore.Components.Web;
 
-public partial class IconButton
+namespace BlazorComponent;
+
+public partial class SIconButton
 {
+    [Parameter]
+    public bool Secondary { get; set; }
+
+    [Parameter]
+    public bool Tertiary { get; set; }
+
+    [Parameter]
+    public bool Warning { get; set; }
+
+    [Parameter]
+    public bool Danger { get; set; }
+
+    [Parameter]
+    public bool Block { get; set; }
+
+    [Parameter]
+    public string? Circle { get; set; }
+
+    [Parameter]
+    public string? Height { get; set; }
+
+    [Parameter]
+    public bool Link { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnMouseDown { get; set; }
+
+    [Parameter]
+    public bool Light { get; set; }
+
+    [Parameter]
+    public string? Key { get; set; }
+
+    [Parameter]
+    public string? Size { get; set; }
     [Parameter]
     public RenderFragment? Icon { get; set; }
 
@@ -15,7 +55,7 @@ public partial class IconButton
     public bool Loading { get; set; }
 
     [Parameter]
-    public Theme Theme { get; set; }
+    public string Theme { get; set; }
 
     [Parameter]
     public bool Disabled { get; set; }
@@ -89,5 +129,15 @@ public partial class IconButton
         }
 
         base.OnInitialized();
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        if (Loading)
+        {
+            CssProvider.CssApply(PrefixCls + "-loading");
+        }
     }
 }
