@@ -28,12 +28,10 @@
         @if (Icon != null || Loading && !Disabled)
         {
             // TODO: 需要加载器实现，
-            <SIconLoading></SIconLoading>
+            @*<SIconLoading></SIconLoading>*@
         }
-        else
-        {
-            @Icon
-        }
+        
+        @Icon
         if (@ChildContent != null)
         {
             <span class="@BtnTextCls.GetClass()" x-semi-prop="@XSemiProp">
@@ -52,11 +50,8 @@
         @if (Icon != null || Loading && !Disabled)
         {
             // TODO: 需要加载器实现，
-            <SIconLoading></SIconLoading>
+            @*<SIconLoading></SIconLoading>*@
         }
-        else
-        {
-            @Icon
-        }
+        @Icon
     }
 </SButton>
