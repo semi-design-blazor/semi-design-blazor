@@ -1,0 +1,7 @@
+﻿<div>
+<SButton Theme="light" Style="margin-right: 8px">浅色主要</SButton>
+<SButton Theme="light" Secondary Style="margin-right: 8px">浅色次要</SButton>
+<SButton Theme="light" Tertiary Style="margin-right: 8px">浅色第三</SButton>
+<SButton Theme="light" Warning Style="margin-right: 8px">浅色警告</SButton>
+<SButton Theme="light" Danger Style="margin-right: 8px">浅色危险</SButton>
+</div>

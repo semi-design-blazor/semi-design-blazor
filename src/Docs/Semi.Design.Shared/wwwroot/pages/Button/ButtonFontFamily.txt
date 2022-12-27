@@ -1,0 +1,22 @@
+﻿
+<article>
+    @foreach (var type in types)
+    {
+
+        <strong key="@type.Key" style="color: var(--semi-color-@type.Key);margin-right: 10px">@type.Value</strong>
+    }
+</article>
+@code {
+    private Dictionary<string, string> types = new Dictionary<string, string>();
+
+    protected override void OnInitialized()
+    {
+        types.Add("primary", "主要");
+        types.Add("secondary", "次要");
+        types.Add("tertiary", "第三");
+        types.Add("warning", "警告");
+        types.Add("danger", "危险");
+
+        base.OnInitialized();
+    }
+}
