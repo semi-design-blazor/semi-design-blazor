@@ -2,8 +2,6 @@
 
 @inherits SDomComponentBase
 
-
-
 <button class="@CssProvider?.GetClass()" style="@CssProvider?.GetStyle()" onclick="@OnClick" onmousedown="@OnMouseDown" type="button" aria-disabled="@Disabled">
     <span class="@(PrefixCls+"-content")">
         @ChildContent

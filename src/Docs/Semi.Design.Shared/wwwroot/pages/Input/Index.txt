@@ -1,0 +1,5 @@
+﻿@using Semi.Design.Shared.Component.Input
+
+<SMonacoEditor Component="Input/BasicUse.txt">
+    <BasicUse/>
+</SMonacoEditor>

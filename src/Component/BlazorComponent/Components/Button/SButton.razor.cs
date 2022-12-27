@@ -58,7 +58,7 @@ public partial class SButton
 
         if (Disabled)
         {
-            CssProvider?.CssApply(PrefixCls+"-disabled");
+            CssProvider?.CssApply("semi-disabled");
         }
 
         CssProvider.CssApply(PrefixCls);
@@ -70,7 +70,7 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Size))
         {
-            CssProvider?.CssApply(PrefixCls + "-size-" + Size.ToLower());
+            CssProvider?.CssApply(PrefixCls + Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
