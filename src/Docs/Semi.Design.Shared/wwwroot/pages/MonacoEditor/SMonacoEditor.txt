@@ -1,7 +1,7 @@
 ﻿@namespace Semi.Design.Shared
 
 @inherits SDomComponentBase
-<div class="child" style="width: @Width;height: @Height">
+<div class="child" style="width: @Width;">
     @ChildContent
 </div>
 
@@ -13,4 +13,5 @@
     .child{
         padding-bottom: 8px;
     }
+
 </style>
