@@ -1,0 +1,23 @@
+﻿<div style="display: flex">
+    @foreach (var size in Sizes)
+    {
+        <div style="margin-right: 10px" key="@size">
+            <SButtonGroup Size=@size>
+                <SButton Size=@size>拷贝</SButton>
+                <SButton Size=@size>查询</SButton>
+                <SButton Size=@size>剪切</SButton>
+            </SButtonGroup>
+        </div>
+    }
+</div>
+
+@code {
+
+    private List<string> Sizes = new()
+    {
+        "large",
+        "default",
+        "small"
+    };
+
+}

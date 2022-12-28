@@ -70,7 +70,7 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Size))
         {
-            CssProvider?.CssApply(PrefixCls + Size.ToLower());
+            CssProvider?.CssApply(PrefixCls +"-size-"+ Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
