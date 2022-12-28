@@ -1,5 +1,4 @@
-﻿
-<article>
+﻿<article>
     @foreach (var type in types)
     {
 

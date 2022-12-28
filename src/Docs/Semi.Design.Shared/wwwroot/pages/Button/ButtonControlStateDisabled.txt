@@ -1,5 +1,4 @@
-﻿
-<div>
+﻿<div>
     <SButton Disabled>禁用</SButton>
     <SButton Disabled Theme="borderless">无背景禁用</SButton>
     <SButton Disabled Theme="light">浅色禁用</SButton>

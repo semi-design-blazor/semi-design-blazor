@@ -1,5 +1,4 @@
-﻿
-<div className="btn-margin-right">
+﻿<div className="btn-margin-right">
     <SButton>主要按钮</SButton>
     <SButton Secondary>次要按钮</SButton>
     <SButton Tertiary>第三按钮</SButton>
