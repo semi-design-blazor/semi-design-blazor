@@ -21,7 +21,7 @@ public partial class SDivider
 
     protected override void OnInitialized()
     {
-        CssProvider.CssApply(PrefixCls);
+        ComponentProvider.CssApply(PrefixCls);
         if (string.IsNullOrEmpty(Layout))
         {
             Layout = "horizontal";
@@ -29,32 +29,32 @@ public partial class SDivider
 
         if(Layout != "vertical")
         {
-            CssProvider.CssApply(PrefixCls + "-horizontal");
+            ComponentProvider.CssApply(PrefixCls + "-horizontal");
         }
 
         if (Dashed == true)
         {
-            CssProvider.CssApply(PrefixCls + "-dashed");
+            ComponentProvider.CssApply(PrefixCls + "-dashed");
         }
         if (ChildContent != null && Layout == "horizontal")
         {
-            CssProvider.CssApply(PrefixCls + "-with-text");
-            CssProvider.CssApply(PrefixCls + "-with-text-" + Align);
+            ComponentProvider.CssApply(PrefixCls + "-with-text");
+            ComponentProvider.CssApply(PrefixCls + "-with-text-" + Align);
         }
 
         if (!string.IsNullOrEmpty(Margin))
         {
             if (Layout == "vertical")
             {
-                CssProvider.CssApply(PrefixCls + "-vertical");
-                CssProvider.StyleApply("margin-left:" + Margin);
-                CssProvider.StyleApply("margin-right:" + Margin);
+                ComponentProvider.CssApply(PrefixCls + "-vertical");
+                ComponentProvider.StyleApply("margin-left:" + Margin);
+                ComponentProvider.StyleApply("margin-right:" + Margin);
             }
             else if(Layout == "horizontal")
             {
-                CssProvider.CssApply(PrefixCls + "-horizontal");
-                CssProvider.StyleApply("margin-top:" + Margin);
-                CssProvider.StyleApply("margin-bottom:" + Margin);
+                ComponentProvider.CssApply(PrefixCls + "-horizontal");
+                ComponentProvider.StyleApply("margin-top:" + Margin);
+                ComponentProvider.StyleApply("margin-bottom:" + Margin);
             }
         }
 

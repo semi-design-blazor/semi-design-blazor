@@ -1,16 +1,16 @@
 ﻿@namespace Semi.Design.Shared
 
 @inherits SDomComponentBase
-<div class="child">
+<div class="child" style="width: @Width;height: @Height">
     @ChildContent
 </div>
 
-<div class="@CssProvider.GetClass()" style="@CssProvider.GetStyle();" id="@Id" @ref="Ref" @attributes="@Attributes">
+<div class="@ComponentProvider.GetClass()" style="@ComponentProvider.GetStyle();" id="@Id" @ref="Ref" @attributes="@Attributes">
 </div>
 
 
 <style>
     .child{
-        padding:8px;
+        padding-bottom: 8px;
     }
 </style>

@@ -64,7 +64,7 @@ public partial class SIconButton
 
     public bool SemiChildrenAlias { get; set; }
 
-    public ComponentCssProvider BtnTextCls { get; } = new();
+    public ComponentProvider BtnTextCls { get; } = new();
 
     public string? XSemiProp { get; set; }
 
@@ -74,38 +74,38 @@ public partial class SIconButton
     {
         if (IconPosition == "right")
         {
-            CssProvider.CssApply(PrefixCls + "-content-left");
+            ComponentProvider.CssApply(PrefixCls + "-content-left");
         }
         else if (IconPosition == "left")
         {
-            CssProvider.CssApply(PrefixCls + "-content-right");
+            ComponentProvider.CssApply(PrefixCls + "-content-right");
         }
 
         if (NoHorizontalPadding?.Length > 1)
         {
             if (NoHorizontalPadding.Any(x => x == "left"))
             {
-                CssProvider.StyleApply("padding-left:0px");
+                ComponentProvider.StyleApply("padding-left:0px");
             }
             if (NoHorizontalPadding.Any(x => x == "right"))
             {
-                CssProvider.StyleApply("padding-right:0px");
+                ComponentProvider.StyleApply("padding-right:0px");
             }
         }
         if (NoHorizontalPadding?.Length == 1)
         {
             if (NoHorizontalPadding.Any(x => x == "true"))
             {
-                CssProvider.StyleApply("padding-left:0px");
-                CssProvider.StyleApply("padding-right:0px");
+                ComponentProvider.StyleApply("padding-left:0px");
+                ComponentProvider.StyleApply("padding-right:0px");
             }
             else if (NoHorizontalPadding.Any(x => x == "left"))
             {
-                CssProvider.StyleApply("padding-left:0px");
+                ComponentProvider.StyleApply("padding-left:0px");
             }
             else if (NoHorizontalPadding.Any(x => x == "right"))
             {
-                CssProvider.StyleApply("padding-right:0px");
+                ComponentProvider.StyleApply("padding-right:0px");
             }
         }
 
@@ -120,11 +120,11 @@ public partial class SIconButton
 
         if (ChildContent == null)
         {
-            CssProvider.CssApply(PrefixCls + "-with-icon-only");
+            ComponentProvider.CssApply(PrefixCls + "-with-icon-only");
         }
         if (Loading)
         {
-            CssProvider.CssApply(PrefixCls + "-loading");
+            ComponentProvider.CssApply(PrefixCls + "-loading");
         }
 
         base.OnInitialized();
@@ -136,7 +136,7 @@ public partial class SIconButton
 
         if (Loading)
         {
-            CssProvider.CssApply(PrefixCls + "-loading");
+            ComponentProvider.CssApply(PrefixCls + "-loading");
         }
     }
 }

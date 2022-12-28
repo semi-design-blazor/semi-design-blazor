@@ -17,7 +17,7 @@
         style="@Style"
         @ref="inputControl"
         autofocus="@AutoFocus"
-        class="@CssProvider.GetClass()"
+        class="@ComponentProvider.GetClass()"
         disabled="@Disabled"
         readonly="@ReadOnly"
         @attributes="Attributes"
@@ -41,7 +41,7 @@
 
 @code
 {
-    private readonly ComponentCssProvider _wrapperCls = new ComponentCssProvider();
+    private readonly ComponentProvider _wrapperCls = new ComponentProvider();
     private bool shouldPreventDefault = false;
     private bool shouldModeBtnMouseDownPreventDefault = false;
     private bool shouldModeBtnMouseUpPreventDefault = false;
@@ -288,7 +288,7 @@
             var labelNode = Prefix ?? InsetLabel;
             if (labelNode is null)
                 return null;
-            var cssProvider = new ComponentCssProvider();
+            var cssProvider = new ComponentProvider();
 
             cssProvider.CssApply(SInputCons.PrefixWrapperStyle.Prefix);
 
@@ -319,7 +319,7 @@
             if (AddonBefore is null)
                 return null;
             
-            var prefixWrapperCls = new ComponentCssProvider();
+            var prefixWrapperCls = new ComponentProvider();
 
             prefixWrapperCls.CssApply(SInputCons.PrependWrapperStyle.Prepend);
 
@@ -370,7 +370,7 @@
             if (Suffix is null)
                 return null;
             
-            var cssProvider = new ComponentCssProvider();
+            var cssProvider = new ComponentProvider();
 
             cssProvider.CssApply(SInputCons.SuffixWrapperStyle.Suffix);
 
@@ -398,7 +398,7 @@
             if (AddonAfter is null)
                 return null;
             
-            var prefixWrapperCls = new ComponentCssProvider();
+            var prefixWrapperCls = new ComponentProvider();
 
             prefixWrapperCls.CssApply(SInputCons.AppendWrapperStyle.Prepend);
 
@@ -489,13 +489,13 @@
         
 
         // input cls
-        CssProvider.CssApply(SInputCons.DefaultPrefixCls);
-        CssProvider.ApplyClassNameIf(Size == SizeType.Default, SInputCons.DefaultStyle.Default);
-        CssProvider.ApplyClassNameIf(Size == SizeType.Small, SInputCons.DefaultStyle.Small);
-        CssProvider.ApplyClassNameIf(Size == SizeType.Large, SInputCons.DefaultStyle.Large);
-        CssProvider.ApplyClassNameIf(Disabled, SInputCons.DefaultStyle.Disabled);
-        CssProvider.ApplyClassNameIf(IsAllowClear, SInputCons.DefaultStyle.SiblingClearBtn);
-        CssProvider.ApplyClassNameIf(Mode == InputMode.Password, SInputCons.DefaultStyle.SiblingModeBtn);
+        ComponentProvider.CssApply(SInputCons.DefaultPrefixCls);
+        ComponentProvider.ApplyClassNameIf(Size == SizeType.Default, SInputCons.DefaultStyle.Default);
+        ComponentProvider.ApplyClassNameIf(Size == SizeType.Small, SInputCons.DefaultStyle.Small);
+        ComponentProvider.ApplyClassNameIf(Size == SizeType.Large, SInputCons.DefaultStyle.Large);
+        ComponentProvider.ApplyClassNameIf(Disabled, SInputCons.DefaultStyle.Disabled);
+        ComponentProvider.ApplyClassNameIf(IsAllowClear, SInputCons.DefaultStyle.SiblingClearBtn);
+        ComponentProvider.ApplyClassNameIf(Mode == InputMode.Password, SInputCons.DefaultStyle.SiblingModeBtn);
 
         if (!this.IsControlComponent())
             Value = DefaultValue;

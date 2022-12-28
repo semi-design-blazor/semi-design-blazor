@@ -27,7 +27,7 @@ public abstract class SDomComponentBase : SComponentBase
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
 
-    public ComponentCssProvider CssProvider { get; } = new();
+    public ComponentProvider ComponentProvider { get; } = new();
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {

@@ -65,7 +65,7 @@ public partial class SMonacoEditor : SDomComponentBase, IAsyncDisposable
 
     protected override void OnInitialized()
     {
-        CssProvider.StyleApply("width:" + Width)
+        ComponentProvider.StyleApply("width:" + Width)
             .StyleApply("height:" + Height);
         base.OnInitialized();
     }
@@ -89,6 +89,7 @@ public partial class SMonacoEditor : SDomComponentBase, IAsyncDisposable
 
     public async Task InitMonaco()
     {
+        EditorOptions.Language = "razor";
         _monaco = await Module.Init(Id, EditorOptions);
         GetCode();
     }

@@ -1,6 +1,6 @@
 ﻿namespace BlazorComponent;
 
-public class ComponentCssProvider
+public class ComponentProvider
 {
     private readonly List<string> _cssConfig = new();
     private readonly List<string> _styleConfig = new();
@@ -10,7 +10,7 @@ public class ComponentCssProvider
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public ComponentCssProvider CssApply(string name)
+    public ComponentProvider CssApply(string name)
     {
         if (_cssConfig.Any(x => x == name))
         {
@@ -23,11 +23,17 @@ public class ComponentCssProvider
     /// <summary>
     /// Apply css to named element
     /// </summary>
-    /// <param name="name"></param>
+    /// <param name="name">key:value</param>
     /// <returns></returns>
-    public ComponentCssProvider StyleApply(string name)
+    public ComponentProvider StyleApply(string name)
     {
         _styleConfig.Add(name);
+        return this;
+    }
+
+    public ComponentProvider StyleApply(string name, string value)
+    {
+        _styleConfig.Add(name + ":" + value);
         return this;
     }
 
@@ -36,7 +42,7 @@ public class ComponentCssProvider
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public ComponentCssProvider Remove(string name)
+    public ComponentProvider Remove(string name)
     {
         _cssConfig.Remove(name);
         _styleConfig.Remove(name);

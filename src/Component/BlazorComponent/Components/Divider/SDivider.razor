@@ -2,7 +2,7 @@
 
 @inherits SDomComponentBase
 
-<div class="@CssProvider.GetClass()" style="@CssProvider.GetStyle()">
+<div class="@ComponentProvider.GetClass()" style="@ComponentProvider.GetStyle()">
     @if (ChildContent != null )
     {
         <span class="@(PrefixCls + "_inner-text")" x-semi-prop="children">

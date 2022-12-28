@@ -68,23 +68,23 @@ public class SIcon:  SDomComponentBase
             _ => ""
         };
 
-        CssProvider.CssApply(StyleCons.PrefixCls);
+        ComponentProvider.CssApply(StyleCons.PrefixCls);
 
-        CssProvider.CssApply(sizeStyle);
+        ComponentProvider.CssApply(sizeStyle);
 
         if (Spin)
         {
-            CssProvider.CssApply($"{StyleCons.PrefixCls}-spinning");
+            ComponentProvider.CssApply($"{StyleCons.PrefixCls}-spinning");
         }
 
         if (!string.IsNullOrWhiteSpace(Label))
         {
-            CssProvider.CssApply($"{StyleCons.PrefixCls}-{Label}");
+            ComponentProvider.CssApply($"{StyleCons.PrefixCls}-{Label}");
         }
 
         if (this.Spin)
         {
-            CssProvider.CssApply(StyleCons.Spinning);
+            ComponentProvider.CssApply(StyleCons.Spinning);
         }
         
         var style = Style;
@@ -96,7 +96,7 @@ public class SIcon:  SDomComponentBase
                 style = $"{style}; transform: {string.Format(StyleCons.Rotate, Rotate)}";
         }
 
-        var className = $"{Class} {CssProvider.GetClass()}";
+        var className = $"{Class} {ComponentProvider.GetClass()}";
         
         builder.OpenElement(0,"span");
         builder.AddAttribute(1,"role", "img");

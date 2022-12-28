@@ -54,53 +54,53 @@ public partial class SButton
 
     protected override void OnInitialized()
     {
-        CssProvider?.StyleApply(Style);
+        ComponentProvider?.StyleApply(Style);
 
         if (Disabled)
         {
-            CssProvider?.CssApply(PrefixCls + "-disabled");
+            ComponentProvider?.CssApply(PrefixCls + "-disabled");
         }
 
-        CssProvider.CssApply(PrefixCls);
+        ComponentProvider.CssApply(PrefixCls);
 
         if (!string.IsNullOrEmpty(Class))
         {
-            CssProvider?.CssApply(Class);
+            ComponentProvider?.CssApply(Class);
         }
 
         if (!string.IsNullOrEmpty(Size))
         {
-            CssProvider?.CssApply(PrefixCls +"-size-"+ Size.ToLower());
+            ComponentProvider?.CssApply(PrefixCls +"-size-"+ Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
         {
-            CssProvider?.CssApply(PrefixCls + "-"+Theme.ToLower());
+            ComponentProvider?.CssApply(PrefixCls + "-"+Theme.ToLower());
         }
         else
         {
-            CssProvider?.CssApply(PrefixCls + "-light");
+            ComponentProvider?.CssApply(PrefixCls + "-light");
         }
 
         if (Secondary)
         {
-            CssProvider?.CssApply(PrefixCls + "-secondary");
+            ComponentProvider?.CssApply(PrefixCls + "-secondary");
         }
         else if (Tertiary)
         {
-            CssProvider?.CssApply(PrefixCls + "-tertiary");
+            ComponentProvider?.CssApply(PrefixCls + "-tertiary");
         }
         else if (Warning)
         {
-            CssProvider?.CssApply(PrefixCls + "-warning");
+            ComponentProvider?.CssApply(PrefixCls + "-warning");
         }
         else if (Danger)
         {
-            CssProvider?.CssApply(PrefixCls + "-danger");
+            ComponentProvider?.CssApply(PrefixCls + "-danger");
         }
         else
         {
-            CssProvider?.CssApply(PrefixCls + "-primary");
+            ComponentProvider?.CssApply(PrefixCls + "-primary");
         }
         base.OnInitialized();
     }

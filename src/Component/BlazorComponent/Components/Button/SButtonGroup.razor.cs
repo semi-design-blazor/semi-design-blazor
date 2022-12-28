@@ -28,19 +28,19 @@ public partial class SButtonGroup
     {
         if (!string.IsNullOrEmpty(Style))
         {
-            CssProvider.StyleApply(Style!);
+            ComponentProvider.StyleApply(Style!);
         }
-        CssProvider.StyleApply("height:auto;");
+        ComponentProvider.StyleApply("height:auto;");
         if (!string.IsNullOrEmpty(Class))
         {
-            CssProvider.CssApply(Class!);
+            ComponentProvider.CssApply(Class!);
         }
-        CssProvider.CssApply("semi-button-group");
-        CssProvider.CssApply("semi-button-group-line-" + Threme ?? "light");
-        CssProvider.CssApply("semi-button-group-line-" + Type ?? "primary");
+        ComponentProvider.CssApply("semi-button-group");
+        ComponentProvider.CssApply("semi-button-group-line-" + Threme ?? "light");
+        ComponentProvider.CssApply("semi-button-group-line-" + Type ?? "primary");
         if (Disabled)
         {
-            CssProvider.CssApply("semi-button-group-line-disabled");
+            ComponentProvider.CssApply("semi-button-group-line-disabled");
         }
         await base.OnInitializedAsync();
     }
