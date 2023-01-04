@@ -1,4 +1,4 @@
-﻿using BlazorComponent;
+﻿using Semi.Design.Blazor;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Semi.Design.Shared.Component.MonacoEditor;

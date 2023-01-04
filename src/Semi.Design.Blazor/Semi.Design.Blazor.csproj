@@ -11,6 +11,8 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Description>基于Semi.Design实现的Blazor ui组件</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +22,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Component\BlazorComponent\BlazorComponent.csproj" />
+      <None Update="logo.png">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+      <None Update="README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>
