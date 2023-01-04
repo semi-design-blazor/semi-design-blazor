@@ -1,5 +1,10 @@
 # 基于Semi.Design实现的Blazor Ui组件
 
+## 添加Semi.Design.Blazor到项目中
+
+```shell
+dotnet add package Semi.Design.Blazor
+```
 
 **注入当前服务**
 

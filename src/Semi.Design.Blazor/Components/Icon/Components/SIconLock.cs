@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
 public class SIconLock: SIcon
 {
