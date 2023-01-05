@@ -45,7 +45,7 @@ builder.Services.AddSemiDesignBlazor();
 
 这是一个快速开始的例子：
 
-```c#
+```razor
 <div className="btn-margin-right">
     <SButton>主要按钮</SButton>
     <SButton Secondary>次要按钮</SButton>
@@ -54,3 +54,16 @@ builder.Services.AddSemiDesignBlazor();
     <SButton Danger>危险按钮</SButton>
 </div>
 ```
+# 👐 贡献指南
+
+阅读贡献指南了解我们的开发流程，包括开发规范、测试规范和构建规范等。
+
+[CONTRIBUTING](CONTRIBUTING.md)
+
+# 💖 Thanks
+
+感谢 [semi.design](https://github.com/DouyinFE/semi-design)。
+
+# 🎈 协议
+
+Semi UI 使用 [MIT 协议](LICENSE)
