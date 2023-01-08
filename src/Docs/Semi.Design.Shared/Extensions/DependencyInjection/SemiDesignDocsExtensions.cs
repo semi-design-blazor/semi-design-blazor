@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Semi.Design.Shared.Component.MonacoEditor;
+using Semi.Design.CodeRendering;
+using Semi.Design.CodeRendering.Extensions;
 using Token.Extensions;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,8 @@ public static class SemiDesignDocsExtensions
 #endif
 
         });
-        services.AddScoped<MonacoEditorJSModule>();
+
+        services.AddSemiDesignCodeRendering();
         services.AddSemiDesignBlazor();
         services.AddEventBus();
     }

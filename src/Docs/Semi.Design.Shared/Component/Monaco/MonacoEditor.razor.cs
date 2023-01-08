@@ -2,9 +2,9 @@ using BlazorComponent;
 using Microsoft.AspNetCore.Components;
 using Semi.Design.CodeRendering;
 
-namespace Semi.Design.Shared.Component.Monaco;
+namespace Semi.Design.Shared;
 
-public partial class MonacoRunCode 
+public partial class MonacoEditor 
 {
     
     [Inject]
@@ -43,15 +43,15 @@ public partial class MonacoRunCode
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
-        {
-            await GetCode();
-        }
-
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    private object Monaco()
+    public async Task InitComplete()
+    {
+        await GetCode();
+    }
+
+    private object InitMonaco()
     {
         return new
         {
@@ -61,8 +61,9 @@ public partial class MonacoRunCode
         };
     }
 
+    
 
-    private async Task<string> GetCode()
+    private async Task GetCode()
     {
         var client = httpClientFactory.CreateClient("docs");
         try
@@ -71,11 +72,9 @@ public partial class MonacoRunCode
             var value = await client.GetStringAsync("_content/Semi.Design.Shared/pages/" + Component);
 
             _monacoEditor?.SetValue(value);
-            return value;
         }
         catch
         {
-            return "";
         }
     }
 }
