@@ -14,7 +14,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-		<PackageReference Include="Semi.Design.CodeRendering" Version="0.1.2" />
+		<PackageReference Include="Semi.Design.CodeRendering" Version="0.1.3" />
 		<PackageReference Include="Token.EventBus" Version="1.3.5" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 	</ItemGroup>
@@ -31,14 +31,6 @@
 
 	<ItemGroup>
 		<ExamplesSourceFile Include="Component\**\*.razor" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Remove="Component\MonacoEditor\MonacoEditor.razor" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ExamplesSourceFile Remove="Component\MonacoEditor\MonacoEditor.razor" />
 	</ItemGroup>
 
 	<!--<Target Name="CopyExmaplesToTxt" AfterTargets="Build">

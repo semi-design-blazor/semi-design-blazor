@@ -1,4 +1,3 @@
-using BlazorComponent;
 using Microsoft.AspNetCore.Components;
 using Semi.Design.CodeRendering;
 
@@ -56,22 +55,35 @@ public partial class MonacoEditor
         return new
         {
             language = "razor",
-            value = "<div></div>",
             theme = "vs-dark"
         };
     }
 
-    
+
+    private (string, string[], CompletionItem[]) RegisterCompletionItemProvider()
+    {
+        var trigger = new[]
+        {
+            "<S"
+        };
+        var completionItems = new CompletionItem[]
+        {
+            new ("SButton",CompletionItemKind.Function,"按钮组件","","","",true,"<SButton></SButton>")
+        };
+        return ("razor", trigger, completionItems);
+    }
 
     private async Task GetCode()
     {
         var client = httpClientFactory.CreateClient("docs");
         try
         {
-
             var value = await client.GetStringAsync("_content/Semi.Design.Shared/pages/" + Component);
 
+            // 设置初始代码
             _monacoEditor?.SetValue(value);
+            // 执行代码渲染
+            _monacoEditor?.RunCode();
         }
         catch
         {

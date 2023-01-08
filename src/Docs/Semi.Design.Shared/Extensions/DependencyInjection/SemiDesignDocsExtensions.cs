@@ -22,6 +22,9 @@ public static class SemiDesignDocsExtensions
         services.AddSemiDesignCodeRendering();
         services.AddSemiDesignBlazor();
         services.AddEventBus();
+
+        // 添加动态编译时全局引用
+        CodeRenderingProject.GlobalUsing += Environment.NewLine+ "@using Semi.Design.Blazor";
     }
 
 }
