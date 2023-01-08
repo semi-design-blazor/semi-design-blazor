@@ -1,0 +1,12 @@
+﻿@namespace Semi.Design.Blazor
+
+@inherits SDomComponentBase
+
+<div class="@ComponentProvider.GetClass()" style="@ComponentProvider.GetStyle()">
+    @if (ChildContent != null )
+    {
+        <span class="@(PrefixCls + "_inner-text")" x-semi-prop="children">
+            @ChildContent
+        </span>
+    }
+</div>

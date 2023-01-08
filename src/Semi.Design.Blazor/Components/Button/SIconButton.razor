@@ -1,0 +1,57 @@
+﻿@namespace Semi.Design.Blazor
+
+@inherits SDomComponentBase
+
+<SButton 
+    Secondary="@Secondary" 
+    Block="@Block" 
+    Circle="@Circle" 
+    Class="@ComponentProvider.GetClass()" 
+    Danger="@Danger"
+    Tertiary="@Tertiary" 
+    Theme="@Theme"
+    Attributes="@Attributes"
+    Size="@Size"
+    Style="@ComponentProvider.GetStyle()"
+    Warning="@Warning"
+    Id="@Id"
+    Disabled="@Disabled"
+    OnMouseDown="@OnMouseDown"
+    OnClick="@OnClick"
+    Light="@Light"
+    Link="@Link"
+    Height="@Height"
+    Key="@Key"
+    >
+    @if(IconPosition == "left")
+    {
+        @if (Icon != null || Loading && !Disabled)
+        {
+            // TODO: 需要加载器实现，
+            @*<SIconLoading></SIconLoading>*@
+        }
+        
+        @Icon
+        if (@ChildContent != null)
+        {
+            <span class="@BtnTextCls.GetClass()" x-semi-prop="@XSemiProp">
+                @ChildContent
+            </span>
+        }
+    }
+    else
+    {
+        if (@ChildContent != null)
+        {
+            <span class="@BtnTextCls.GetClass()" x-semi-prop="@XSemiProp">
+                @ChildContent
+            </span>
+        }
+        @if (Icon != null || Loading && !Disabled)
+        {
+            // TODO: 需要加载器实现，
+            @*<SIconLoading></SIconLoading>*@
+        }
+        @Icon
+    }
+</SButton>

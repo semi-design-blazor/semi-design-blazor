@@ -1,9 +1,0 @@
-@namespace BlazorComponent
-
-@inherits SDomComponentBase
-
-<button class="@ComponentProvider?.GetClass()" style="@ComponentProvider?.GetStyle()" onclick="@OnClick" onmousedown="@OnMouseDown" type="button" aria-disabled="@Disabled">
-    <span class="@(PrefixCls+"-content")">
-        @ChildContent
-    </span>
-</button>
