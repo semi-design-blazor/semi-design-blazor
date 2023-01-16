@@ -1,13 +1,32 @@
 @namespace Semi.Design.Shared
+<div class="monaco" style="">
+    <SButton Block Style="float: left;width:100%;" OnClick="RunCode">Debugµ÷ÊÔ</SButton>
+    <SMonacoEditor InitComplete="InitComplete"
+                   Style="float: left;min-height:400px;"
+                   MonacInitHandler="MonacoAsync"
+                   RegisterCompletionItemProvider="RegisterCompletionItemProvider"
+                   Height="40%"
+    @ref="_sMonacoEditor" />
 
-<SMonacoEditor
-    RegisterCompletionItemProvider="RegisterCompletionItemProvider"
-    InitComplete="InitComplete"
-    MonacInitHandler="InitMonaco"
-    ComponentType="@ComponentType"
-    @ref="_monacoEditor">
-    <Function>
-        <SButton OnClick="RunCode">µ÷ÊÔ</SButton>
-    </Function>
+    <div class="render">
+        @if (ComponentType != null)
+        {
+            <DynamicComponent Type="@ComponentType" />
+        }
+    </div>
+</div>
 
-</SMonacoEditor>
+<style>
+
+    .render {
+        height: 400px;
+        width: 45%;
+        float: left;
+        margin: 8px;
+    }
+    .monaco{
+        width: 100%;
+        height: 450px;
+        margin: 8px;
+    }
+</style>

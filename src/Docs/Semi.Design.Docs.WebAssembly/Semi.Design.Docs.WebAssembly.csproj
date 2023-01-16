@@ -19,4 +19,13 @@
       <ProjectReference Include="..\Semi.Design.Shared\Semi.Design.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\css\app.css">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\index.html">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

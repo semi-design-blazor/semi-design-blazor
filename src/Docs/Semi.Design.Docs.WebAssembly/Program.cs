@@ -9,10 +9,11 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddSemiDesignDocs(builder.Configuration);
+
 builder.Services.AddSemiDesignCodeRendering(Environment.WebAssembly);
 
-var app = builder.Build();
+_= CodeRenderingHelper.InitializedAsync(builder.Services.BuildServiceProvider());
 
-await CodeRendering.InitializedAsync(app.Services);
+var app = builder.Build();
 
 await app.RunAsync();

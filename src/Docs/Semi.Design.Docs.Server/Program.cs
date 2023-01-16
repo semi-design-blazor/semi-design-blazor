@@ -11,9 +11,10 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSemiDesignDocs(builder.Configuration);
 builder.Services.AddSemiDesignCodeRendering(Environment.Server);
 
+_ = CodeRenderingHelper.InitializedAsync(builder.Services.BuildServiceProvider());
+
 var app = builder.Build();
 
-await CodeRendering.InitializedAsync(app.Services);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

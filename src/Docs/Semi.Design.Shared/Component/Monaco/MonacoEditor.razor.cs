@@ -5,9 +5,11 @@ namespace Semi.Design.Shared;
 
 public partial class MonacoEditor
 {
-    [Inject] public required IHttpClientFactory httpClientFactory { get; set; }
+    [Inject]
+    public required IHttpClientFactory httpClientFactory { get; set; }
 
-    [Inject] public NavigationManager NavigationManager { get; set; }
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
 
     [Parameter]
     public string Component { get; set; }
@@ -18,6 +20,7 @@ public partial class MonacoEditor
     private ElementReference _ref;
     private ElementReference? _prevRef;
     private bool _elementReferenceChanged;
+    private SMonacoEditor? _sMonacoEditor;
 
     public SMonacoEditor? _monacoEditor;
 
@@ -43,23 +46,9 @@ public partial class MonacoEditor
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-    }
-
     public async Task InitComplete()
     {
         await GetCode();
-    }
-
-    private object InitMonaco()
-    {
-        return new
-        {
-            language = "razor",
-            theme = "vs-dark"
-        };
     }
 
 
@@ -81,35 +70,38 @@ public partial class MonacoEditor
         // 组件名称
         var type = "Semi.Design.Shared.Component." + Component.Replace("/", ".").Replace(".txt", "");
         ComponentType = typeof(MonacoEditor).Assembly.GetTypes().FirstOrDefault(x => x.FullName == type);
+        StateHasChanged();
+    }
+
+    private async Task<object?> MonacoAsync()
+    {
         var client = httpClientFactory.CreateClient("docs");
         try
         {
             var value = await client.GetStringAsync(NavigationManager.BaseUri + "_content/Semi.Design.Shared/pages/" + (Component.EndsWith(".txt") ? Component : Component + ".txt"));
-            if (string.IsNullOrEmpty(value))
-            {
-                return;
-            }
 
-            // 设置初始代码
-            await _monacoEditor?.SetValue(value);
-            if (ComponentType == null)
+            return new
             {
-                // 执行代码渲染
-                await _monacoEditor?.RunCode(value);
-            }
-            else
-            {
-                StateHasChanged();
-            }
+                language = "razor",
+                value,
+                theme = "vs-dark"
+            };
+
         }
-        catch
+        catch (Exception)
         {
+            return null;
         }
     }
 
     private async Task RunCode()
     {
         // 执行代码渲染
-        await _monacoEditor?.RunCode();
+        var code = await _sMonacoEditor?.GetValue();
+        _ = Task.Run(() =>
+        {
+            ComponentType = CodeRenderingHelper.RenderingToType(code);
+            _ = InvokeAsync(StateHasChanged);
+        });
     }
 }
