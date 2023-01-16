@@ -1,3 +1,0 @@
-﻿<MonacoEditor Component="Divider/BasicUse.txt">
-    <BasicUse/>
-</MonacoEditor>

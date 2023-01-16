@@ -14,12 +14,12 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+		<PackageReference Include="Semi.Design.CodeRendering" Version="0.1.7" />
 		<PackageReference Include="Token.EventBus" Version="1.3.5" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\semi-design-codeRendering\src\Semi.Design.CodeRendering\Semi.Design.CodeRendering.csproj" />
 		<ProjectReference Include="..\..\Semi.Design.Blazor\Semi.Design.Blazor.csproj" />
 	</ItemGroup>
 

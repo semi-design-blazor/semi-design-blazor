@@ -1,7 +1,0 @@
-﻿<div>
-    <SButton Theme="borderless" Style="margin-right: 8px">主要</SButton>
-    <SButton Theme="borderless" Secondary Style="margin-right: 8px">次要</SButton>
-    <SButton Theme="borderless" Tertiary Style="margin-right: 8px">第三</SButton>
-    <SButton Theme="borderless" Warning Style="margin-right: 8px">警告</SButton>
-    <SButton Theme="borderless" Danger Style="margin-right: 8px">危险</SButton>
-</div>

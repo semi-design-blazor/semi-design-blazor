@@ -1,3 +1,0 @@
-﻿<div>
-    <SButton Block>块级按钮</SButton>
-</div>
