@@ -2,6 +2,7 @@
 using Semi.Design.CodeRendering;
 using Semi.Design.CodeRendering.Extensions;
 using Token.Extensions;
+using Environment = Semi.Design.CodeRendering.Environment;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -9,17 +10,9 @@ public static class SemiDesignDocsExtensions
 {
     public static void AddSemiDesignDocs(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHttpClient("docs", options =>
-        {
-#if DEBUG
-            options.BaseAddress = new Uri(configuration["Urls"]);
-#else
-            options.BaseAddress = new Uri("http://127.0.0.1:80");
-#endif
+        services.AddHttpClient("docs");
 
-        });
-
-        services.AddSemiDesignCodeRendering();
+        services.AddSemiDesignCodeRendering(Environment.Server);
         services.AddSemiDesignBlazor();
         services.AddEventBus();
 

@@ -1,3 +1,13 @@
 @namespace Semi.Design.Shared
 
-<SMonacoEditor RegisterCompletionItemProvider="RegisterCompletionItemProvider" InitComplete="InitComplete" MonacInitHandler="InitMonaco" @ref="_monacoEditor"></SMonacoEditor>
+<SMonacoEditor
+    RegisterCompletionItemProvider="RegisterCompletionItemProvider"
+    InitComplete="InitComplete"
+    MonacInitHandler="InitMonaco"
+    ComponentType="@ComponentType"
+    @ref="_monacoEditor">
+    <Function>
+        <SButton OnClick="RunCode">ต๗สิ</SButton>
+    </Function>
+
+</SMonacoEditor>

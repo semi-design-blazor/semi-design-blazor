@@ -3,14 +3,17 @@ using Semi.Design.CodeRendering;
 
 namespace Semi.Design.Shared;
 
-public partial class MonacoEditor 
+public partial class MonacoEditor
 {
-    
-    [Inject]
-    public required IHttpClientFactory httpClientFactory { get; set; }
-    
+    [Inject] public required IHttpClientFactory httpClientFactory { get; set; }
+
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
     [Parameter]
     public string Component { get; set; }
+
+    [Parameter]
+    public Type? ComponentType { get; set; }
 
     private ElementReference _ref;
     private ElementReference? _prevRef;
@@ -68,25 +71,45 @@ public partial class MonacoEditor
         };
         var completionItems = new CompletionItem[]
         {
-            new ("SButton",CompletionItemKind.Function,"°´Å¥×é¼ş","","","",true,"<SButton></SButton>")
+            new("SButton", CompletionItemKind.Function, "æŒ‰é’®ç»„ä»¶", "", "", "", true, "<SButton></SButton>")
         };
         return ("razor", trigger, completionItems);
     }
 
     private async Task GetCode()
     {
+        // ç»„ä»¶åç§°
+        var type = "Semi.Design.Shared.Component." + Component.Replace("/", ".").Replace(".txt", "");
+        ComponentType = typeof(MonacoEditor).Assembly.GetTypes().FirstOrDefault(x => x.FullName == type);
         var client = httpClientFactory.CreateClient("docs");
         try
         {
-            var value = await client.GetStringAsync("_content/Semi.Design.Shared/pages/" + Component);
+            var value = await client.GetStringAsync(NavigationManager.BaseUri + "_content/Semi.Design.Shared/pages/" + (Component.EndsWith(".txt") ? Component : Component + ".txt"));
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
 
-            // ÉèÖÃ³õÊ¼´úÂë
-            _monacoEditor?.SetValue(value);
-            // Ö´ĞĞ´úÂëäÖÈ¾
-            _monacoEditor?.RunCode();
+            // è®¾ç½®åˆå§‹ä»£ç 
+            await _monacoEditor?.SetValue(value);
+            if (ComponentType == null)
+            {
+                // æ‰§è¡Œä»£ç æ¸²æŸ“
+                await _monacoEditor?.RunCode(value);
+            }
+            else
+            {
+                StateHasChanged();
+            }
         }
         catch
         {
         }
+    }
+
+    private async Task RunCode()
+    {
+        // æ‰§è¡Œä»£ç æ¸²æŸ“
+        await _monacoEditor?.RunCode();
     }
 }

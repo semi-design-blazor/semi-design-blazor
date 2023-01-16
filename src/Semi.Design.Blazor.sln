@@ -18,6 +18,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.Docs.Server", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.Shared", "Docs\Semi.Design.Shared\Semi.Design.Shared.csproj", "{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.Docs.WebAssembly", "Docs\Semi.Design.Docs.WebAssembly\Semi.Design.Docs.WebAssembly.csproj", "{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semi.Design.CodeRendering", "..\..\semi-design-codeRendering\src\Semi.Design.CodeRendering\Semi.Design.CodeRendering.csproj", "{6D17FB76-202F-463B-979B-A2CEC4B94DFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D17FB76-202F-463B-979B-A2CEC4B94DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D17FB76-202F-463B-979B-A2CEC4B94DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D17FB76-202F-463B-979B-A2CEC4B94DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D17FB76-202F-463B-979B-A2CEC4B94DFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +56,8 @@ Global
 		{CB00A79A-B17E-4476-A7DC-3F1F4477A3AC} = {736BAD0C-920F-46D7-8B12-A1B186F93CC1}
 		{2E48FFAF-B4C7-463A-9113-8BCE2BD89C00} = {736BAD0C-920F-46D7-8B12-A1B186F93CC1}
 		{8DF55B16-2F3C-4FEF-8AD0-BA8363E0A23E} = {736BAD0C-920F-46D7-8B12-A1B186F93CC1}
+		{D41804C8-2E7A-4E47-AA68-E8C97A6CF58A} = {736BAD0C-920F-46D7-8B12-A1B186F93CC1}
+		{6D17FB76-202F-463B-979B-A2CEC4B94DFB} = {736BAD0C-920F-46D7-8B12-A1B186F93CC1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {797E234C-D162-4177-8704-E201254D4677}
