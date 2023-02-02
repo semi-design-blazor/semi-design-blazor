@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconUnderline: SIcon
+public class SIconUnderline : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M7 2C6.17157 2 5.5 2.67157 5.5 3.5V11C5.5 14.5899 8.41015 17.5 12 17.5C15.5899 17.5 18.5 14.5899 18.5 11V3.5C18.5 2.67157 17.8284 2 17 2C16.1716 2 15.5 2.67157 15.5 3.5V11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11V3.5C8.5 2.67157 7.82843 2 7 2Z"
                 fill="currentColor"
@@ -24,9 +23,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="underline";
+            builder.CloseElement();
+        };
+        Label = "underline";
         base.OnInitialized();
     }
 }

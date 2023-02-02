@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconUserStroked: SIcon
+public class SIconUserStroked : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M12 14C8.7 14 6 11.3 6 8C6 4.7 8.7 2 12 2C15.3 2 18 4.7 18 8C18 11.3 15.3 14 12 14ZM12 4C9.8 4 8 5.8 8 8C8 10.2 9.8 12 12 12C14.2 12 16 10.2 16 8C16 5.8 14.2 4 12 4Z"
                 fill="currentColor"
@@ -24,9 +23,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="user_stroked";
+            builder.CloseElement();
+        };
+        Label = "user_stroked";
         base.OnInitialized();
     }
 }

@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconMenu: SIcon
+public class SIconMenu : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <g opacity={0.99}>
                 <path
                     d="M2 19.5C2 18.6716 2.67157 18 3.5 18H20.5C21.3284 18 22 18.6716 22 19.5C22 20.3284 21.3284 21 20.5 21H3.5C2.67157 21 2 20.3284 2 19.5Z"
@@ -30,9 +29,9 @@ builder.AddMarkupContent(8, """
                 />
             </g>
         """);
-builder.CloseElement();
-};
-Label ="menu";
+            builder.CloseElement();
+        };
+        Label = "menu";
         base.OnInitialized();
     }
 }

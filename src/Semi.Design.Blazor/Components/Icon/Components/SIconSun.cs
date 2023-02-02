@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconSun: SIcon
+public class SIconSun : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M10.5 1.5C10.5 0.671573 11.1716 0 12 0C12.8284 0 13.5 0.671573 13.5 1.5V2.5C13.5 3.32843 12.8284 4 12 4C11.1716 4 10.5 3.32843 10.5 2.5V1.5Z"
                 fill="currentColor"
@@ -52,9 +51,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="sun";
+            builder.CloseElement();
+        };
+        Label = "sun";
         base.OnInitialized();
     }
 }

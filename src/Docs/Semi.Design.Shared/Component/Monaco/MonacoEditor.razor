@@ -1,12 +1,8 @@
 @namespace Semi.Design.Shared
 <div class="monaco" style="">
-    <SButton Block Style="float: left;width:100%;" OnClick="RunCode">Debugµ÷ÊÔ</SButton>
-    <SMonacoEditor InitComplete="InitComplete"
-                   Style="float: left;min-height:400px;"
-                   MonacInitHandler="MonacoAsync"
-                   RegisterCompletionItemProvider="RegisterCompletionItemProvider"
-                   Height="40%"
-    @ref="_sMonacoEditor" />
+    <SButton Block Style="width:100%;" OnClick="RunCode">Run</SButton>
+    <SMonacoEditor @ref="_monacoEditor" InitMonacoHandler="async()=>await MonacoAsync()" Style="float: left;" MonacoRegisterCompletionItemOptions="RegisterCompletionItemProvider()" Width="50%">
+    </SMonacoEditor>
 
     <div class="render">
         @if (ComponentType != null)
@@ -26,7 +22,7 @@
     }
     .monaco{
         width: 100%;
-        height: 450px;
+        height: 530px;
         margin: 8px;
     }
 </style>

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Semi.Design.CodeRendering;
+using Semi.Design.Blazor;
+using Semi.Design.Blazor.Languages.Razor;
 
 namespace Semi.Design.Shared;
 
@@ -20,7 +21,6 @@ public partial class MonacoEditor
     private ElementReference _ref;
     private ElementReference? _prevRef;
     private bool _elementReferenceChanged;
-    private SMonacoEditor? _sMonacoEditor;
 
     public SMonacoEditor? _monacoEditor;
 
@@ -46,13 +46,22 @@ public partial class MonacoEditor
         }
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await InitComplete();
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
     public async Task InitComplete()
     {
         await GetCode();
     }
 
 
-    private (string, string[], CompletionItem[]) RegisterCompletionItemProvider()
+    private static MonacoRegisterCompletionItemOptions[] RegisterCompletionItemProvider()
     {
         var trigger = new[]
         {
@@ -60,9 +69,19 @@ public partial class MonacoEditor
         };
         var completionItems = new CompletionItem[]
         {
-            new("SButton", CompletionItemKind.Function, "按钮组件", "", "", "", true, "<SButton></SButton>")
+            new("SButton", CompletionItemKind.Function, "按钮组件", "", "", "", true, "<SButton></SButton>"),
+            new("SButtonGroup", CompletionItemKind.Function, "按钮组件", "", "", "", true, "<SButtonGroup></SButtonGroup>"),
+            new("SIconButton", CompletionItemKind.Function, "按钮组件", "", "", "", true, "<SIconButton></SIconButton>"),
+            new("SInput", CompletionItemKind.Function, "输入框组件", "", "", "", true, "<SInput></SInput>")
         };
-        return ("razor", trigger, completionItems);
+
+        return new MonacoRegisterCompletionItemOptions[] {
+            new(){
+                Language="blazor",
+                items = completionItems,
+                TriggerCharacters = trigger
+            }
+        };
     }
 
     private async Task GetCode()
@@ -82,7 +101,7 @@ public partial class MonacoEditor
 
             return new
             {
-                language = "razor",
+                language = "blazor",
                 value,
                 theme = "vs-dark"
             };
@@ -97,10 +116,11 @@ public partial class MonacoEditor
     private async Task RunCode()
     {
         // 执行代码渲染
-        var code = await _sMonacoEditor?.GetValue();
+        var code = await _monacoEditor?.Module.GetValue(_monacoEditor!.Monaco);
+
         _ = Task.Run(() =>
         {
-            ComponentType = CodeRenderingHelper.RenderingToType(code);
+            ComponentType = RazorCompile.CompileToType(new CompileRazorOptions { Code = code, ConcurrentBuild = true });
             _ = InvokeAsync(StateHasChanged);
         });
     }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Semi.Design.Blazor;
 
-public class SIcon:  SDomComponentBase
+public class SIcon : SDomComponentBase
 {
     /// <summary>
     /// svg data
@@ -14,21 +14,21 @@ public class SIcon:  SDomComponentBase
     /// <summary>
     /// icon size
     /// </summary>
-    [Parameter] 
+    [Parameter]
     public IconSize Size { get; set; } = IconSize.Default;
 
     /// <summary>
     /// spin
     /// </summary>
-    [Parameter] 
+    [Parameter]
     public bool Spin { get; set; } = false;
 
     /// <summary>
     /// rotate
     /// </summary>
-    [Parameter] 
+    [Parameter]
     public double Rotate { get; set; } = 0d;
-    
+
     [Parameter]
     public string Label { get; set; }
 
@@ -55,7 +55,7 @@ public class SIcon:  SDomComponentBase
     public EventCallback<MouseEventArgs> onMouseUp { get; set; }
 
     #endregion
-    
+
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
         var sizeStyle = Size switch
@@ -86,21 +86,21 @@ public class SIcon:  SDomComponentBase
         {
             ComponentProvider.CssApply(StyleCons.Spinning);
         }
-        
+
         var style = Style;
         if (Rotate != 0.0d)
         {
             if (string.IsNullOrEmpty(style))
                 style = $"transform: {string.Format(StyleCons.Rotate, Rotate)}";
-            else 
+            else
                 style = $"{style}; transform: {string.Format(StyleCons.Rotate, Rotate)}";
         }
 
         var className = $"{Class} {ComponentProvider.GetClass()}";
-        
-        builder.OpenElement(0,"span");
-        builder.AddAttribute(1,"role", "img");
-        builder.AddAttribute(2,"aria-label", Label);
+
+        builder.OpenElement(0, "span");
+        builder.AddAttribute(1, "role", "img");
+        builder.AddAttribute(2, "aria-label", Label);
         builder.AddAttribute(3, "class", className);
         builder.AddAttribute(4, "onclick", OnClick);
         builder.AddAttribute(5, "onmousedown", OnMouseDown);
@@ -134,7 +134,7 @@ public class SIcon:  SDomComponentBase
 /// <summary>
 /// icon size
 /// </summary>
-public enum IconSize: int
+public enum IconSize : int
 {
     Default = 0,    //// 16x16
     Inherit = 1,

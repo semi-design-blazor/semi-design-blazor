@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconCalendarClock: SIcon
+public class SIconCalendarClock : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M2 5V19C2 20.6569 3.34315 22 5 22H12.101C11.5151 21.4259 11.0297 20.7496 10.6736 20H6C4.89543 20 4 19.1046 4 18V8C4 7.44772 4.44772 7 5 7H19C19.5523 7 20 7.44772 20 8V10.6736C20.7496 11.0297 21.4259 11.5151 22 12.101V5C22 3.34315 20.6569 2 19 2H5C3.34315 2 2 3.34315 2 5Z"
                 fill="currentColor"
@@ -42,9 +41,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="calendar_clock";
+            builder.CloseElement();
+        };
+        Label = "calendar_clock";
         base.OnInitialized();
     }
 }

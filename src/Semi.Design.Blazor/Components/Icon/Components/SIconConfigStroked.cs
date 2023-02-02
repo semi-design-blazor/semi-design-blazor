@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconConfigStroked: SIcon
+public class SIconConfigStroked : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <g clipPath="url(#clip0_1478_52)">
                 <path fillRule="evenodd" clipRule="evenodd" d="M16.9539 4.23508C16.9539 3.61376 17.4575 3.11008 18.0789 3.11008H21.3947C22.016 3.11008 22.5197 3.61376 22.5197 4.23508C22.5197 4.8564 22.016 5.36008 21.3947 5.36008H18.0789C17.4575 5.36008 16.9539 4.8564 16.9539 4.23508Z" fill="currentColor" />
                 <path fillRule="evenodd" clipRule="evenodd" d="M13.6579 0.900024C14.2792 0.900024 14.7829 1.4037 14.7829 2.02502V6.44608C14.7829 7.0674 14.2792 7.57108 13.6579 7.57108C13.0366 7.57108 12.5329 7.0674 12.5329 6.44608V2.02502C12.5329 1.4037 13.0366 0.900024 13.6579 0.900024Z" fill="currentColor" />
@@ -32,9 +31,9 @@ builder.AddMarkupContent(8, """
                 </clipPath>
             </defs>
         """);
-builder.CloseElement();
-};
-Label ="config_stroked";
+            builder.CloseElement();
+        };
+        Label = "config_stroked";
         base.OnInitialized();
     }
 }

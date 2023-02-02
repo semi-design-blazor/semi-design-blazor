@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.IO;
 using System.Reflection;
 using Token.Events;
 

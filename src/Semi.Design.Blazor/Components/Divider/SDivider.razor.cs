@@ -2,17 +2,17 @@
 
 public partial class SDivider
 {
-    [Parameter] 
+    [Parameter]
     public string? Align { get; set; } = "center";
 
-    [Parameter] 
+    [Parameter]
     public string? Margin { get; set; }
 
-    [Parameter] 
+    [Parameter]
     public bool Dashed { get; set; }
 
-    [Parameter] 
-    public string? Layout { get; set; } 
+    [Parameter]
+    public string? Layout { get; set; }
 
     /// <summary>
     /// 当前组件的前缀
@@ -27,7 +27,7 @@ public partial class SDivider
             Layout = "horizontal";
         }
 
-        if(Layout != "vertical")
+        if (Layout != "vertical")
         {
             ComponentProvider.CssApply(PrefixCls + "-horizontal");
         }
@@ -50,7 +50,7 @@ public partial class SDivider
                 ComponentProvider.StyleApply("margin-left:" + Margin);
                 ComponentProvider.StyleApply("margin-right:" + Margin);
             }
-            else if(Layout == "horizontal")
+            else if (Layout == "horizontal")
             {
                 ComponentProvider.CssApply(PrefixCls + "-horizontal");
                 ComponentProvider.StyleApply("margin-top:" + Margin);

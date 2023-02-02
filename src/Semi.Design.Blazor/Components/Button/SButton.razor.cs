@@ -70,12 +70,12 @@ public partial class SButton
 
         if (!string.IsNullOrEmpty(Size))
         {
-            ComponentProvider?.CssApply(PrefixCls +"-size-"+ Size.ToLower());
+            ComponentProvider?.CssApply(PrefixCls + "-size-" + Size.ToLower());
         }
 
         if (!string.IsNullOrEmpty(Theme))
         {
-            ComponentProvider?.CssApply(PrefixCls + "-"+Theme.ToLower());
+            ComponentProvider?.CssApply(PrefixCls + "-" + Theme.ToLower());
         }
         else
         {

@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconExternalOpen: SIcon
+public class SIconExternalOpen : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M12 3.5C12 2.67157 12.6716 2 13.5 2H19.5C20.8807 2 22 3.11929 22 4.5V10.5C22 11.3284 21.3284 12 20.5 12C19.6716 12 19 11.3284 19 10.5V7L11.0607 14.9394C10.4749 15.5251 9.52513 15.5251 8.93934 14.9394C8.35355 14.3536 8.35355 13.4038 8.93934 12.818L16.7574 5H13.5C12.6716 5 12 4.32843 12 3.5Z"
                 fill="currentColor"
@@ -24,9 +23,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="external_open";
+            builder.CloseElement();
+        };
+        Label = "external_open";
         base.OnInitialized();
     }
 }

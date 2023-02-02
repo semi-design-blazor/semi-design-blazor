@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconUser: SIcon
+public class SIconUser : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M12 16C13.9818 16 15.7453 14.3394 16.7142 11.8589C17.3163 11.6122 17.8892 10.8644 18.1508 9.88823C18.4909 8.61881 18.4234 7.48536 17.4964 7.13266C17.4064 2.7111 15.6617 1 12 1C8.33858 1 6.59387 2.71088 6.50372 7.13179C5.57454 7.48354 5.50668 8.61777 5.84709 9.8882C6.10904 10.8658 6.68318 11.6143 7.28626 11.8599C8.2552 14.3398 10.0186 16 12 16Z"
                 fill="currentColor"
@@ -24,9 +23,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="user";
+            builder.CloseElement();
+        };
+        Label = "user";
         base.OnInitialized();
     }
 }

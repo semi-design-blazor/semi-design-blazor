@@ -4,7 +4,7 @@ namespace Semi.Design.Blazor;
 
 public abstract class SDomComponentBase : SComponentBase
 {
-    [Parameter] 
+    [Parameter]
     public string? Id { get; set; }
 
     /// <summary>
@@ -37,7 +37,7 @@ public abstract class SDomComponentBase : SComponentBase
     protected override Task OnInitializedAsync()
     {
         Id ??= Guid.NewGuid().ToString("N");
-        
+
         return base.OnInitializedAsync();
     }
 }

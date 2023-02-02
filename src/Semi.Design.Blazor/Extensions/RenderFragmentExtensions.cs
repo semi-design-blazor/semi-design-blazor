@@ -1,6 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Components.Rendering;
+﻿using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
+using System.Text.RegularExpressions;
 
 namespace Semi.Design.Blazor.Extensions;
 
@@ -10,11 +10,11 @@ public static class RenderFragmentExtensions
     {
         if (self is null)
             return false;
-        
+
         var builder = new RenderTreeBuilder();
         builder.AddContent(0, self);
         var frameTypes = new[] { RenderTreeFrameType.Text, RenderTreeFrameType.Markup };
-        var frame = builder.GetFrames().Array.FirstOrDefault(x => frameTypes.Any(t=> t== x.FrameType));
+        var frame = builder.GetFrames().Array.FirstOrDefault(x => frameTypes.Any(t => t == x.FrameType));
         return !string.IsNullOrWhiteSpace(frame.MarkupContent) && !IsHtml(frame.MarkupContent);
     }
 
@@ -22,7 +22,7 @@ public static class RenderFragmentExtensions
     {
         if (self is null)
             return false;
-        
+
         var builder = new RenderTreeBuilder();
         builder.AddContent(0, self);
         var frame = builder.GetFrames().Array.FirstOrDefault(x => RenderTreeFrameType.Component == x.FrameType);
@@ -34,7 +34,7 @@ public static class RenderFragmentExtensions
     {
         if (string.IsNullOrWhiteSpace(text))
             return false;
-        
+
         var regex = new Regex(Pattern);
         return regex.IsMatch(text);
     }

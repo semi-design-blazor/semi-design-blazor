@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconShrink: SIcon
+public class SIconShrink : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M2.43946 2.43934C1.85368 3.02513 1.85368 3.97487 2.43946 4.56066L6.8788 9H4.00012C3.1717 9 2.50012 9.67157 2.50012 10.5C2.50012 11.3284 3.1717 12 4.00012 12H10.5001C10.7035 12 10.8974 11.9595 11.0743 11.8862C11.2512 11.813 11.417 11.7045 11.5608 11.5607C11.7046 11.4168 11.8131 11.2511 11.8863 11.0742C11.9596 10.8973 12.0001 10.7034 12.0001 10.5V4C12.0001 3.17157 11.3285 2.5 10.5001 2.5C9.67169 2.5 9.00012 3.17157 9.00012 4V6.87868L4.56078 2.43934C3.97499 1.85355 3.02525 1.85355 2.43946 2.43934Z"
                 fill="currentColor"
@@ -24,9 +23,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="shrink";
+            builder.CloseElement();
+        };
+        Label = "shrink";
         base.OnInitialized();
     }
 }

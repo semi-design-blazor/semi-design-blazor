@@ -1,13 +1,10 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Components.Web;
-
-namespace Semi.Design.Blazor;
+﻿namespace Semi.Design.Blazor;
 
 internal static class SInputCons
 {
     public const string DefaultPrefixCls = "semi-input";
     public const string WrapperPrefixCls = $"{DefaultPrefixCls}-wrapper";
-    
+
     public static class WrapperStyle
     {
         public const string Prefix = $"{DefaultPrefixCls}-wrapper__with-prefix";
@@ -40,7 +37,7 @@ internal static class SInputCons
         public const string SiblingClearBtn = $"{DefaultPrefixCls}-sibling-clearbtn";
         public const string SiblingModeBtn = $"{DefaultPrefixCls}-sibling-modebtn";
     }
-    
+
     public static class PrependWrapperStyle
     {
         public const string Prepend = $"{DefaultPrefixCls}-prepend";
@@ -57,7 +54,7 @@ internal static class SInputCons
 
     public static string ClearBtnStyle = $"{DefaultPrefixCls}-clearbtn";
     public static string ModeBtnStyle = $"{DefaultPrefixCls}-modebtn";
-    
+
 
     public static class PrefixWrapperStyle
     {
@@ -66,7 +63,7 @@ internal static class SInputCons
         public const string PrefixText = $"{DefaultPrefixCls}-prefix-text";
         public const string PrefixIcon = $"{DefaultPrefixCls}-prefix-icon";
     }
-    
+
     public static class SuffixWrapperStyle
     {
         public const string Suffix = $"{DefaultPrefixCls}-suffix";
@@ -94,7 +91,7 @@ public enum SizeType
 public enum ValidateStatus
 {
     Default = 0,
-    Error= 1,
+    Error = 1,
     Warning = 2,
-    Success  =3,
+    Success = 3,
 }

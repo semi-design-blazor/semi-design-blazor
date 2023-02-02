@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Components.Rendering;
 namespace Semi.Design.Blazor;
-public class SIconHorn: SIcon
+public class SIconHorn : SIcon
 {
     protected override void OnInitialized()
     {
-		Svg = builder =>
-		{
-builder.OpenElement(0, "svg");
-builder.AddAttribute(1, "viewBox","0 0 24 24");
-builder.AddAttribute(2, "fill","none");
-builder.AddAttribute(3, "xmlns","http://www.w3.org/2000/svg");
-builder.AddAttribute(4, "width","1em");
-builder.AddAttribute(5, "height","1em");
-builder.AddAttribute(6, "focusable","false");
-builder.AddAttribute(7, "aria-hidden","true");
-builder.AddMarkupContent(8, """
+        Svg = builder =>
+        {
+            builder.OpenElement(0, "svg");
+            builder.AddAttribute(1, "viewBox", "0 0 24 24");
+            builder.AddAttribute(2, "fill", "none");
+            builder.AddAttribute(3, "xmlns", "http://www.w3.org/2000/svg");
+            builder.AddAttribute(4, "width", "1em");
+            builder.AddAttribute(5, "height", "1em");
+            builder.AddAttribute(6, "focusable", "false");
+            builder.AddAttribute(7, "aria-hidden", "true");
+            builder.AddMarkupContent(8, """
             <path
                 d="M18.1929 16.882C18.6485 16.8301 18.8373 16.0719 18.8373 16.0719C18.8373 16.0719 19.3622 14.425 18.8032 8.95386C18.2443 3.4827 17.2349 2.01069 17.2349 2.01069C17.2349 2.01069 16.8733 1.31515 16.4248 1.36627C15.8323 1.43379 15.3081 1.82961 14.6688 2.64511L14.6657 2.64916C14.0236 3.46825 12.2151 5.7753 8.43644 6.20591C7.98015 6.24451 7.5244 6.30092 7.06912 6.35727C6.84167 6.38542 6.61421 6.41357 6.38691 6.43947C5.11769 6.58411 4.13093 7.51989 3.86264 8.69864C3.80834 8.70029 3.75367 8.70421 3.69872 8.71047C2.62758 8.83253 1.8582 9.79982 1.98026 10.871C2.10232 11.9421 3.06961 12.7115 4.14075 12.5894C4.1957 12.5831 4.24985 12.5747 4.30313 12.564C4.82976 13.6522 6.00176 14.342 7.27097 14.1974C7.49771 14.1715 7.72499 14.1424 7.95231 14.1132C8.40782 14.0547 8.8644 13.9962 9.3205 13.9638C12.9142 13.5543 15.3352 15.2487 16.1547 15.9736C16.9742 16.6986 17.3709 16.9757 18.1929 16.882Z"
                 fill="currentColor"
@@ -28,9 +27,9 @@ builder.AddMarkupContent(8, """
                 fill="currentColor"
             />
         """);
-builder.CloseElement();
-};
-Label ="horn";
+            builder.CloseElement();
+        };
+        Label = "horn";
         base.OnInitialized();
     }
 }

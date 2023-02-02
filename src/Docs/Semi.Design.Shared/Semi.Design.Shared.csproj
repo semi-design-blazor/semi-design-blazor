@@ -14,12 +14,14 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-		<PackageReference Include="Semi.Design.CodeRendering" Version="0.1.9" />
+		<PackageReference Include="Semi.Design.Blazor.Languages.Razor" Version="0.0.2" />
+		<PackageReference Include="Semi.Design.Blazor.Monaco.Editor" Version="0.0.6" />
 		<PackageReference Include="Token.EventBus" Version="1.3.5" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\..\..\Blazor\semi\Semi.Design.Blazor.Monaco.Editor\src\Semi.Design.Blazor.Monaco.Editor\Semi.Design.Blazor.Monaco.Editor.csproj" />
 		<ProjectReference Include="..\..\Semi.Design.Blazor\Semi.Design.Blazor.csproj" />
 	</ItemGroup>
 
@@ -31,6 +33,31 @@
 
 	<ItemGroup>
 		<ExamplesSourceFile Include="Component\**\*.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\BasicUse.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonBlockLevel.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonControlstateDisabled.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonDeepBackground.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonFontFamily.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonGroups.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonGroupType.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\Buttonlcon.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonLightBackground.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonLoadstate.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonNoBackground.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonSize.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\ButtonType.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Button\Index.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Divider\BasicUse.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Divider\Index.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Home\Home.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Icon\BasicUse.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Icon\Index.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Input\BasicUse.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Input\Index.txt" />
+	  <_ContentIncludedByDefault Remove="wwwroot\pages\Monaco\MonacoEditor.txt" />
 	</ItemGroup>
 
 	<!--<Target Name="CopyExmaplesToTxt" AfterTargets="Build">

@@ -3,7 +3,8 @@
 namespace Semi.Design.Blazor;
 
 public partial class SIconButton
-{   [Parameter]
+{
+    [Parameter]
     public bool Secondary { get; set; }
 
     [Parameter]
