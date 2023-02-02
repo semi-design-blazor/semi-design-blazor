@@ -4,8 +4,7 @@ namespace Semi.Design.Blazor;
 
 public abstract class SDomComponentBase : SComponentBase
 {
-    [Parameter]
-    public string? Id { get; set; }
+    [Parameter] public string? Id { get; set; }
 
     /// <summary>
     /// Specifies one or more class names for an DOM element.
@@ -23,6 +22,7 @@ public abstract class SDomComponentBase : SComponentBase
     /// Custom attributes
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)]
+    [CascadingParameter(Name = nameof(Attributes))]
     public virtual IDictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();
 
     [Parameter] public RenderFragment? ChildContent { get; set; }

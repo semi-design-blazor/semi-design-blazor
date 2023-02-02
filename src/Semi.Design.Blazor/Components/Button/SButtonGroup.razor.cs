@@ -2,7 +2,6 @@
 
 public partial class SButtonGroup
 {
-
     [Parameter]
     public bool Disabled { get; set; }
 
@@ -10,17 +9,28 @@ public partial class SButtonGroup
     public string? Size { get; set; }
 
     [Parameter]
-    public string? Threme { get; set; }
+    public string? Theme { get; set; }
 
     [Parameter]
     public string? Type { get; set; }
+    
+    [Parameter]
+    public bool Secondary { get; set; }
 
-    private ParameterView _parameters;
+    [Parameter]
+    public bool Tertiary { get; set; }
 
+    [Parameter]
+    public bool Warning { get; set; }
+
+    [Parameter]
+    public bool Danger { get; set; }
+
+    [Parameter]
+    public bool Link { get; set; }
+    
     public override async Task SetParametersAsync(ParameterView parameters)
     {
-        _parameters = parameters;
-
         await base.SetParametersAsync(parameters);
     }
 
@@ -36,17 +46,12 @@ public partial class SButtonGroup
             ComponentProvider.CssApply(Class!);
         }
         ComponentProvider.CssApply("semi-button-group");
-        ComponentProvider.CssApply("semi-button-group-line-" + Threme ?? "light");
+        ComponentProvider.CssApply("semi-button-group-line-" + Theme ?? "light");
         ComponentProvider.CssApply("semi-button-group-line-" + Type ?? "primary");
         if (Disabled)
         {
             ComponentProvider.CssApply("semi-button-group-line-disabled");
         }
         await base.OnInitializedAsync();
-    }
-
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
     }
 }

@@ -55,6 +55,9 @@ public partial class SIconButton
     public bool Loading { get; set; }
 
     [Parameter]
+    public EventCallback<bool> LoadingChanged { get; set; }
+    
+    [Parameter]
     public string Theme { get; set; }
 
     [Parameter]

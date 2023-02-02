@@ -2,3 +2,13 @@
     padding-top:8px;
     padding-bottom:20px;
 }
+.article-wrapper-semi{
+    flex-grow: 1;
+    flex-basis: 100%;
+    padding-top: 24px;
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1300px;
+    position: relative;
+    left: -10px;
+}

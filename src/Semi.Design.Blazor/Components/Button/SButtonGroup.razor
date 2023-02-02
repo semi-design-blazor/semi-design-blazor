@@ -2,6 +2,22 @@
 
 @inherits SDomComponentBase
 
-<div class="@ComponentProvider.GetClass()" style="@ComponentProvider.GetStyle()" role="group" >
-    @ChildContent
+<div class="@ComponentProvider.GetClass()" style="@ComponentProvider.GetStyle()" role="group">
+    <CascadingValue Value="@Danger" Name="@nameof(Danger)">
+        <CascadingValue Value="Disabled" Name="@nameof(Disabled)">
+            <CascadingValue Value="Link" Name="@nameof(Link)">
+                <CascadingValue Value="Secondary" Name="@nameof(Secondary)">
+                    <CascadingValue Value="Size" Name="@nameof(Size)">
+                        <CascadingValue Value="Tertiary" Name="@nameof(Tertiary)">
+                            <CascadingValue Value="Theme" Name="@nameof(Theme)">
+                                <CascadingValue Value="Warning" Name="@nameof(Warning)">
+                                    @ChildContent
+                                </CascadingValue>
+                            </CascadingValue>
+                        </CascadingValue>
+                    </CascadingValue>
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
 </div>

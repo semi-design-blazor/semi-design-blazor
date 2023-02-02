@@ -5,17 +5,37 @@ namespace Semi.Design.Blazor;
 public partial class SButton
 {
     [Parameter]
+    [CascadingParameter(Name = nameof(Secondary))]
     public bool Secondary { get; set; }
 
     [Parameter]
+    [CascadingParameter(Name = nameof(Tertiary))]
     public bool Tertiary { get; set; }
 
     [Parameter]
+    [CascadingParameter(Name = nameof(Warning))]
     public bool Warning { get; set; }
 
     [Parameter]
+    [CascadingParameter(Name = nameof(Danger))]
     public bool Danger { get; set; }
 
+    [Parameter]
+    [CascadingParameter(Name = nameof(Link))]
+    public bool Link { get; set; }
+    
+    [Parameter]
+    [CascadingParameter(Name = nameof(Disabled))]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    [CascadingParameter(Name = nameof(Theme))]
+    public string? Theme { get; set; }
+
+    [Parameter]
+    [CascadingParameter(Name = nameof(Size))]
+    public string? Size { get; set; }
+    
     [Parameter]
     public bool Block { get; set; }
 
@@ -24,9 +44,6 @@ public partial class SButton
 
     [Parameter]
     public string? Height { get; set; }
-
-    [Parameter]
-    public bool Link { get; set; }
 
     [Parameter]
     public EventCallback<MouseEventArgs> OnClick { get; set; }
@@ -39,16 +56,6 @@ public partial class SButton
 
     [Parameter]
     public string? Key { get; set; }
-
-    [Parameter]
-    public bool Disabled { get; set; }
-
-    [Parameter]
-    public string? Theme { get; set; }
-
-    [Parameter]
-    public string? Size { get; set; }
-
 
     private const string PrefixCls = "semi-button";
 
@@ -105,8 +112,4 @@ public partial class SButton
         base.OnInitialized();
     }
 
-    public override async Task SetParametersAsync(ParameterView parameters)
-    {
-        await base.SetParametersAsync(parameters);
-    }
 }
