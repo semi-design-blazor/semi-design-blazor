@@ -38,9 +38,10 @@ builder.Services.AddSemiDesignBlazor();
 
 添加css引用
 `server`模式 需要将引用添加到`_Host.cshtml` 文件中 `wasm`模式需要添加到`index.html`中
+
 ```
-<link href="https://lf-cdn-tos.bytescm.com/obj/static/semi_main/styles311371.css" rel="stylesheet" />
-<link href="https://lf-cdn-tos.bytescm.com/obj/static/semi_main/styles.57c7ea7196391b9b3c79311371.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@douyinfe/semi-ui@2.27.0/dist/css/semi.css">
+<link rel="stylesheet" href="https://unpkg.com/@douyinfe/semi-icons@latest/dist/css/semi-icons.css">
 ```
 
 这是一个快速开始的例子：
